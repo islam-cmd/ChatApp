@@ -1,13 +1,17 @@
 package com.example.chatapp;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -24,12 +28,13 @@ public class RegisterActivity extends AppCompatActivity {
     Button btn_register;
     FirebaseAuth auth;
     DatabaseReference refrence;
+    ImageButton doc_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
+        doc_btn = findViewById(R.id.doc_btn);
         username = findViewById(R.id.username);
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
@@ -42,7 +47,12 @@ public class RegisterActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-
+        doc_btn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent2 = new Intent(RegisterActivity.this, docRegActivity.class);
+                  startActivity(intent2);
+                                       }
+                                   });
         btn_register.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 String text_username = username.getText().toString();
