@@ -49,7 +49,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         doc_btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent2 = new Intent(RegisterActivity.this, docRegActivity.class);
+                Intent intent2 = new Intent(RegisterActivity.this, DocRegActivity.class);
                   startActivity(intent2);
                                        }
                                    });
