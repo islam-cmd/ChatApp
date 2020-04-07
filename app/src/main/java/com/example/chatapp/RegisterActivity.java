@@ -59,6 +59,8 @@ public class RegisterActivity extends AppCompatActivity {
                 String text_email = email.getText().toString();
                 String text_password = password.getText().toString();
 
+
+                
                 if (TextUtils.isEmpty(text_username) || TextUtils.isEmpty(text_email) || TextUtils.isEmpty(text_password)) {
                     Toast.makeText(RegisterActivity.this, "All fields are Required", Toast.LENGTH_SHORT).show();
                 } else if (text_password.length() < 6) {
