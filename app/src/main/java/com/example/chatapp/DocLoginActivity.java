@@ -3,7 +3,6 @@ package com.example.chatapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import de.hdodenhof.circleimageview.CircleImageView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,22 +16,17 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
-public class LoginActivity extends AppCompatActivity {
-
-
+public class DocLoginActivity extends AppCompatActivity {
     MaterialEditText email, password;
     Button btn_login;
     FirebaseAuth auth;
     ImageButton doc_btn;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-
+        setContentView(R.layout.activity_doc_login);
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         btn_login = findViewById(R.id.btn_login);
@@ -43,18 +37,14 @@ public class LoginActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("LogIn");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
         doc_btn.setOnClickListener(new View.OnClickListener() {
-                                       @Override
-                                       public void onClick(View v) {
-                                           Intent intent = new Intent(LoginActivity.this, DocLoginActivity.class);
-                                           startActivity(intent);
-                                           finish();
-                                       }
-                                   }
-        );
-
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DocLoginActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
                 String txt_email = email.getText().toString();
                 String txt_password = password.getText().toString();
                 if (TextUtils.isEmpty(txt_email) || TextUtils.isEmpty(txt_password)) {
-                    Toast.makeText(LoginActivity.this, "All Fields are Required", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DocLoginActivity.this, "All Fields are Required", Toast.LENGTH_SHORT).show();
                 } else {
 
 
@@ -70,12 +60,12 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                Intent intent = new Intent (DocLoginActivity.this, DocMainActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
                                 finish();
-                            } else {
-                                Toast.makeText(LoginActivity.this, "Authentication failed!", Toast.LENGTH_SHORT).show();
+                            }else{
+                                Toast.makeText(DocLoginActivity.this, "Authentication failed!", Toast.LENGTH_SHORT).show();
 
                             }
                         }
@@ -85,4 +75,4 @@ public class LoginActivity extends AppCompatActivity {
         });
 
     }
-}
+    }

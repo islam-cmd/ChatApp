@@ -49,8 +49,9 @@ public class RegisterActivity extends AppCompatActivity {
 
         doc_btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent2 = new Intent(RegisterActivity.this, DocRegActivity.class);
-                  startActivity(intent2);
+                Intent intent = new Intent(RegisterActivity.this, DocRegActivity.class);
+                  startActivity(intent);
+                  finish();
                                        }
                                    });
         btn_register.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +61,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String text_password = password.getText().toString();
 
 
-                
+
                 if (TextUtils.isEmpty(text_username) || TextUtils.isEmpty(text_email) || TextUtils.isEmpty(text_password)) {
                     Toast.makeText(RegisterActivity.this, "All fields are Required", Toast.LENGTH_SHORT).show();
                 } else if (text_password.length() < 6) {

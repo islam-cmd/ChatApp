@@ -10,7 +10,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DocRegActivity"></activity>
+        <activity android:name=".FirstTimeActivity"></activity>
+        <activity android:name=".DocLoginActivity" />
+        <activity android:name=".DocMainActivity" />
+        <activity android:name=".DocRegActivity" />
         <activity android:name=".MessageActivity" />
         <activity android:name=".StartActivity">
             <intent-filter>

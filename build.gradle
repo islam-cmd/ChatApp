@@ -9,7 +9,7 @@ buildscript {
     }
     dependencies {
 //        androidTestCompile 'com.android.support:support-annotations:23.3.0'
-        classpath 'com.android.tools.build:gradle:3.6.1'
+        classpath 'com.android.tools.build:gradle:3.6.2'
         classpath 'com.google.gms:google-services:4.3.3'
 
 
