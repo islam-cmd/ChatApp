@@ -47,93 +47,94 @@ public class DocMainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
+
+        profile_image = findViewById(R.id.profile_image);
+        username = findViewById(R.id.username);
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        refrence = FirebaseDatabase.getInstance().getReference("Doctors").child(firebaseUser.getUid());
+
+        refrence.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Doctor doctor = dataSnapshot.getValue(Doctor.class);
+                username.setText(doctor.getUsername());
+                if (doctor.getImageURL().equals("default")) {
+                    profile_image.setImageResource(R.mipmap.ic_launcher);
+
+                } else {
+                    Glide.with(DocMainActivity.this).load(doctor.getImageURL()).into(profile_image);
+                }
+            }
 //
-//        profile_image = findViewById(R.id.profile_image);
-//        username = findViewById(R.id.username);
-//        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-//        refrence = FirebaseDatabase.getInstance().getReference("Doctors").child(firebaseUser.getUid());
-//
-//        refrence.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                Doctor user = dataSnapshot.getValue(Doctor.class);
-//                username.setText(user.getUsername());
-//                if (user.getImageURL().equals("default")) {
-//                    profile_image.setImageResource(R.mipmap.ic_launcher);
-//
-//                } else {
-//                    Glide.with(DocMainActivity.this).load(user.getImageURL()).into(profile_image);
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-//        TabLayout tabLayout = findViewById(R.id.tab_layout);
-//        ViewPager viewPager = findViewById(R.id.view_pager);
-//
-//        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
-//
-//        viewPagerAdapter.addFragment(new ChatsFragment(), "Chats");
-//        viewPagerAdapter.addFragment(new UsersFragment(), "Users");
-//
-//        viewPager.setAdapter(viewPagerAdapter);
-//        tabLayout.setupWithViewPager(viewPager);
-//
-//    }
-//
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//
-//        getMenuInflater().inflate(R.menu.menu, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        switch (item.getItemId()) {
-//            case R.id.logout:
-//                FirebaseAuth.getInstance().signOut();
-//                startActivity(new Intent(DocMainActivity.this, StartActivity.class));
-//                finish();
-//                return true;
-//        }
-//        return false;
-//
-//    }
-//
-//    class ViewPagerAdapter extends FragmentPagerAdapter {
-//        private ArrayList<Fragment> fragments;
-//        private ArrayList<String> titles;
-//
-//        ViewPagerAdapter(FragmentManager fm) {
-//            super(fm);
-//            this.fragments = new ArrayList<>();
-//            this.titles = new ArrayList<>();
-//        }
-//
-//        @NonNull
-//        @Override
-//        public Fragment getItem(int position) {
-//            return fragments.get(position);
-//        }
-//
-//        @Override
-//        public int getCount() {
-//            return fragments.size();
-//        }
-//
-//        public void addFragment(Fragment fragment, String title) {
-//            fragments.add(fragment);
-//            titles.add(title);
-//        }
-//
-//        @Nullable
-//        @Override
-//        public CharSequence getPageTitle(int position) {
-//            return titles.get(position);
-//        }
-    }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        TabLayout tabLayout = findViewById(R.id.tab_layout);
+        ViewPager viewPager = findViewById(R.id.view_pager);
+
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+
+        viewPagerAdapter.addFragment(new ChatsFragment(), "Chats");
+
+        viewPagerAdapter.addFragment(new UsersFragment(), "Users");
+
+        viewPager.setAdapter(viewPagerAdapter);
+        tabLayout.setupWithViewPager(viewPager);
+
     }
 
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.logout:
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(DocMainActivity.this, StartActivity.class));
+                finish();
+                return true;
+        }
+        return false;
+
+    }
+
+        class ViewPagerAdapter extends FragmentPagerAdapter {
+            private ArrayList<Fragment> fragments;
+            private ArrayList<String> titles;
+
+            ViewPagerAdapter(FragmentManager fm) {
+                super(fm);
+                this.fragments = new ArrayList<>();
+                this.titles = new ArrayList<>();
+            }
+
+        @NonNull
+        @Override
+            public Fragment getItem(int position) {
+                return fragments.get(position);
+            }
+
+        @Override
+            public int getCount() {
+                return fragments.size();
+            }
+
+            public void addFragment(Fragment fragment, String title) {
+                fragments.add(fragment);
+                titles.add(title);
+            }
+
+        @Nullable
+        @Override
+            public CharSequence getPageTitle(int position) {
+                return titles.get(position);
+            }
+        }
+    }
+//

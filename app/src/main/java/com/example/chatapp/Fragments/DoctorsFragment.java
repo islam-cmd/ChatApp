@@ -30,8 +30,8 @@ import java.util.List;
 
 public class DoctorsFragment extends Fragment {
     private RecyclerView recyclerView;
-    private List<User> mUsers;
-    private UserAdapter doctorAdapter;
+    private List<Doctor> mUsers;
+    private DoctorAdapter doctorAdapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -47,19 +47,20 @@ public class DoctorsFragment extends Fragment {
 
         final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference refrence = FirebaseDatabase.getInstance().getReference("Doctors");
-        refrence.addValueEventListener(new ValueEventListener() {
+//        DatabaseReference docRef  = FirebaseDatabase.getInstance().getReference();
+    refrence.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 mUsers.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    User user = snapshot.getValue(User.class);
-                    assert user != null;
-                    assert firebaseUser != null;
+                    Doctor user = snapshot.getValue(Doctor.class);
+//                    assert user != null;
+//                    assert firebaseUser != null;
 //                    if (!user.getId().equals(firebaseUser.getUid())) {
                     mUsers.add(user);
 //                    }
                 }
-             doctorAdapter = new UserAdapter(getContext(), mUsers);
+             doctorAdapter = new DoctorAdapter(getContext(), mUsers);
                 recyclerView.setAdapter(doctorAdapter);
 
             }

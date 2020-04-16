@@ -17,7 +17,7 @@
     android:id="@+id/doc_btn"
     android:layout_width="40dp"
     android:layout_height="40dp"
-    android:layout_marginLeft="300dp"/>
+    android:layout_marginLeft="200dp"/>
         
 
     </androidx.appcompat.widget.Toolbar>

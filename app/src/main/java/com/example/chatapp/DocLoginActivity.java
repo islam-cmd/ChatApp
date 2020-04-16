@@ -35,7 +35,7 @@ public class DocLoginActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("LogIn");
+        getSupportActionBar().setTitle("DOCLogIn");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         doc_btn.setOnClickListener(new View.OnClickListener() {
             @Override
