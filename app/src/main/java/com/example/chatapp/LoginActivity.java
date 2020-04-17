@@ -1,5 +1,5 @@
 package com.example.chatapp;
-
+//added a comment here
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
