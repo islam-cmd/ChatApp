@@ -11,6 +11,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -27,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     Button btn_login;
     FirebaseAuth auth;
     ImageButton doc_btn;
+    TextView forgot_password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         password = findViewById(R.id.password);
         btn_login = findViewById(R.id.btn_login);
         doc_btn = findViewById(R.id.doc_btn);
+        forgot_password = findViewById(R.id.forgot_password);
 
         auth = FirebaseAuth.getInstance();
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -44,6 +47,12 @@ public class LoginActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("LogIn");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        forgot_password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(  new Intent(LoginActivity.this, ResetPasswordActivity.class));
+            }
+        });
 
         doc_btn.setOnClickListener(new View.OnClickListener() {
                                        @Override
