@@ -13,10 +13,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
 import com.example.chatapp.Adapter.MessageAdapter;
@@ -34,7 +32,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class MessageActivity extends AppCompatActivity {
+public class DocMessageActivity extends AppCompatActivity {
     CircleImageView profile_image;
     TextView username;
 
@@ -49,10 +47,10 @@ public class MessageActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     Intent intent;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_doc_message);
         setContentView(R.layout.activity_message);
 //        Toolbar toolbar = findViewById(R.id.toolbar);
 
@@ -89,14 +87,14 @@ public class MessageActivity extends AppCompatActivity {
                     sendMessage(fuser.getUid(), userid, msg);
                 } else {
 
-                    Toast.makeText(MessageActivity.this, "You can't send empty message", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DocMessageActivity.this, "You can't send empty message", Toast.LENGTH_SHORT).show();
                 }
                 text_send.setText("");
             }
         });
 
 
-        refrence = FirebaseDatabase.getInstance().getReference("Users").child(userid);
+        refrence = FirebaseDatabase.getInstance().getReference("Doctors").child(userid);
 
         refrence.addValueEventListener(new ValueEventListener() {
             @Override
@@ -106,7 +104,7 @@ public class MessageActivity extends AppCompatActivity {
                 if (user.getImageURL().equals("default")) {
                     profile_image.setImageResource(R.mipmap.ic_launcher);
                 } else {
-                    Glide.with(MessageActivity.this).load(user.getImageURL()).into(profile_image);
+                    Glide.with(DocMessageActivity.this).load(user.getImageURL()).into(profile_image);
                 }
                 readMessage(fuser.getUid(),userid,user.getImageURL());
             }
@@ -117,7 +115,6 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
     }
-
     private void sendMessage(String sender, String reciever, String message) {
 
 
@@ -141,7 +138,7 @@ public class MessageActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.logout:
                 FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(MessageActivity.this, StartActivity.class));
+                startActivity(new Intent(DocMessageActivity.this, StartActivity.class));
                 finish();
                 return true;
         }
@@ -164,7 +161,7 @@ public class MessageActivity extends AppCompatActivity {
                             chat.getReciever().equals(userid) && chat.getSender().equals(myid)) {
                         mchat.add(chat);
                     }
-                    messageAdapter = new MessageAdapter(MessageActivity.this, mchat, imageurl);
+                    messageAdapter = new MessageAdapter(DocMessageActivity.this, mchat, imageurl);
                     recyclerView.setAdapter(messageAdapter);
                 }
             }
@@ -175,5 +172,4 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
     }
-
 }

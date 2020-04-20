@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.chatapp.DocMessageActivity;
 import com.example.chatapp.MessageActivity;
 import com.example.chatapp.Model.Doctor;
 import com.example.chatapp.Model.User;
@@ -36,19 +37,19 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull DoctorAdapter.ViewHolder holder, int position) {
-        final Doctor user = mUsers.get(position);
-        holder.username.setText(user.getUsername());
-        if (user.getImageURL().equals("default")) {
+        final Doctor doctor = mUsers.get(position);
+        holder.username.setText(doctor.getUsername());
+        if (doctor.getImageURL().equals("default")) {
             holder.profile_image.setImageResource(R.mipmap.ic_launcher);
         } else {
 
-            Glide.with(mContext).load(user.getImageURL()).into(holder.profile_image);
+            Glide.with(mContext).load(doctor.getImageURL()).into(holder.profile_image);
         }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, MessageActivity.class);
-                intent.putExtra("userid", user.getId());
+                Intent intent = new Intent(mContext, DocMessageActivity.class);
+                intent.putExtra("userid", doctor.getId());
                 mContext.startActivity(intent);
             }
         });

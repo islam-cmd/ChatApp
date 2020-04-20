@@ -1,9 +1,13 @@
 package com.example.chatapp.Model;
 
+import android.provider.ContactsContract;
+
+import static android.provider.ContactsContract.*;
+
 public class User {
 
     private String id, username, imageURL;
-
+private CommonDataKinds.Email Email;
     public User(String id, String username, String imageURL) {
         this.id = id;
         this.username = username;
@@ -12,8 +16,6 @@ public class User {
     }
 
     public User() {
-
-
     }
 
     public String getId() {

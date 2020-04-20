@@ -9,6 +9,8 @@ public class Doctor {
         this.imageURL = imageURL;
 
     }
+    public Doctor(){
+    }
 
     public void setId(String id) {
         this.id = id;

@@ -4,23 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity">
+    tools:context=".DocResetActivity">
 
 
     <androidx.appcompat.widget.Toolbar
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark">
-
-
-        <ImageButton
-            android:id="@+id/doc_btn"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="200dp"
-            android:src="@drawable/doc" />
-
+        android:background="@color/colorDocs">
     </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
@@ -33,18 +25,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Register"
+            android:text="Reset Password"
             android:textSize="20sp"
             android:textStyle="bold" />
-
-        <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/username"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:hint="username"
-            android:inputType="text"
-            app:met_floatingLabel="normal" />
 
 
         <com.rengwuxian.materialedittext.MaterialEditText
@@ -56,26 +39,28 @@
             android:inputType="textEmailAddress"
             app:met_floatingLabel="normal" />
 
-        <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:hint="Password"
-            android:inputType="textPassword"
-            app:met_floatingLabel="normal" />
+
 
 
         <Button
-            android:id="@+id/btn_register"
+            android:id="@+id/Reset"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:background="@color/colorPrimaryDark"
-            android:text="Register"
+            android:background="@color/colorDocs"
+            android:text="Reset"
             android:textColor="#fff" />
 
-    </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Once you press RESET an e-mail will be sent to your password"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:id="@+id/forgot_password"
+            />
 
+    </LinearLayout>
 
 </RelativeLayout>

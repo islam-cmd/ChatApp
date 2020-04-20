@@ -1,5 +1,5 @@
 package com.example.chatapp;
-
+//added a comment here
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -11,6 +11,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,7 +20,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.rengwuxian.materialedittext.MaterialEditText;
-
+//added another comment
 public class LoginActivity extends AppCompatActivity {
 
 
@@ -27,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     Button btn_login;
     FirebaseAuth auth;
     ImageButton doc_btn;
+    TextView forgot_password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         password = findViewById(R.id.password);
         btn_login = findViewById(R.id.btn_login);
         doc_btn = findViewById(R.id.doc_btn);
+        forgot_password = findViewById(R.id.forgot_password);
 
         auth = FirebaseAuth.getInstance();
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -44,13 +47,19 @@ public class LoginActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("LogIn");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        forgot_password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(  new Intent(LoginActivity.this, ResetPasswordActivity.class));
+            }
+        });
 
         doc_btn.setOnClickListener(new View.OnClickListener() {
                                        @Override
                                        public void onClick(View v) {
-                                           Intent intent = new Intent(LoginActivity.this, DocLoginActivity.class);
-                                           startActivity(intent);
-                                           finish();
+         Intent intent = new Intent(LoginActivity.this, DocLoginActivity.class);
+         startActivity(intent);
+         finish();
                                        }
                                    }
         );

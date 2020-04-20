@@ -12,7 +12,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ChatApp"
+        android:text="E-HEALTH"
         android:textColor="#fff"
         android:id="@+id/text"
         android:textSize="25sp"
