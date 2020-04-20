@@ -32,7 +32,8 @@
 
         <activity
             android:name=".GpsActivity"
-            android:label="@string/title_activity_gps" >
+            android:label="@string/title_activity_gps"
+            android:exported="true">
         </activity>
         <!-- <activity android:name=".DocResetActivity"></activity> -->
         <!-- <activity android:name=".ResetPasswordActivity"></activity> -->
