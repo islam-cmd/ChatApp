@@ -40,7 +40,7 @@ public class MessageActivity extends AppCompatActivity {
 
     FirebaseUser fuser;
     DatabaseReference refrence;
-
+ImageButton email;
     ImageButton btn_send;
     EditText text_send;
 
@@ -68,7 +68,7 @@ public class MessageActivity extends AppCompatActivity {
                 finish();
             }
         });
-
+        email = findViewById(R.id.email);
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -94,7 +94,21 @@ public class MessageActivity extends AppCompatActivity {
                 text_send.setText("");
             }
         });
-
+        email.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Intent.ACTION_SEND);
+                i.setType("message/rfc822");
+                i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"i.tookhy@gmail.com"});
+                i.putExtra(Intent.EXTRA_SUBJECT, "subject of email");
+                i.putExtra(Intent.EXTRA_TEXT   , "body of email");
+                try {
+                    startActivity(Intent.createChooser(i, "Send mail..."));
+                } catch (android.content.ActivityNotFoundException ex) {
+                    Toast.makeText(MessageActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         refrence = FirebaseDatabase.getInstance().getReference("Users").child(userid);
 

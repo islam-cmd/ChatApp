@@ -50,6 +50,7 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.ViewHolder
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, DocMessageActivity.class);
                 intent.putExtra("userid", doctor.getId());
+//                intent.putExtra(" userto", doctor.getUsername());
                 mContext.startActivity(intent);
             }
         });
