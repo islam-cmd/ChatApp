@@ -47,8 +47,16 @@ public class GpsActivity extends FragmentActivity implements OnMapReadyCallback 
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        if (locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)){
-            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, new LocationListener() {
+        if (locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER) || locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+            String provider = new String();
+            if (locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)){
+                provider = LocationManager.NETWORK_PROVIDER;
+            }
+            else if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+                provider = LocationManager.GPS_PROVIDER;
+            }
+
+            locationManager.requestLocationUpdates(provider, 0, 0, new LocationListener() {
                 @Override
                 public void onLocationChanged(Location location) {
                     double latitude = location.getLatitude();
@@ -76,35 +84,6 @@ public class GpsActivity extends FragmentActivity implements OnMapReadyCallback 
                 @Override public void onProviderDisabled(String s) {
 
                 }
-            });
-        }
-        else if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, new LocationListener() {
-                @Override
-                public void onLocationChanged(Location location) {
-                    double latitude = location.getLatitude();
-                    double longitude = location.getLongitude();
-                    //create object, latLng
-                    LatLng latLng = new LatLng(latitude, longitude);
-                    //create object, geoCoder
-                    Geocoder geocoder = new Geocoder(getApplicationContext());
-                    try {
-                        List<Address> addressList = geocoder.getFromLocation(latitude, longitude, 1);
-                        String addressString = addressList.get(0).getLocality() + ",";
-                        addressString += addressList.get(0).getCountryName();
-
-                        // Add a marker to location and move the camera
-                        mMap.addMarker(new MarkerOptions().position(latLng).title(addressString));
-                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 11f));
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-                @Override public void onStatusChanged(String s, int i, Bundle bundle) { }
-                @Override public void onProviderEnabled(String s) {}
-                @Override public void onProviderDisabled(String s) {}
             });
         }
     }
