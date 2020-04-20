@@ -1,15 +1,22 @@
 package com.example.chatapp.Model;
 
 public class Doctor {
-    private String id, username, imageURL;
+    private String id;
+    private String username;
+    private String imageURL;
 
-    public Doctor(String id, String username, String imageURL) {
+
+    private String email;
+
+    public Doctor(String email, String id, String imageURL, String username) {
         this.id = id;
         this.username = username;
         this.imageURL = imageURL;
+        this.email = email;
 
     }
-    public Doctor(){
+
+    public Doctor() {
     }
 
     public void setId(String id) {
@@ -34,5 +41,13 @@ public class Doctor {
 
     public String getImageURL() {
         return imageURL;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
