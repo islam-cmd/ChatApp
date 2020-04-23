@@ -4,44 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".patient_dashboard">
+    tools:context=".PatientDashboard">
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="108dp"
-        android:layout_marginTop="101dp"
-        android:text="Dashboard"
-        android:textSize="40dp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="122dp"
-        tools:layout_editor_absoluteY="76dp" />
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentTop="true"
+    android:layout_centerHorizontal="true"
+    android:layout_marginStart="108dp"
+    android:layout_marginTop="101dp"
+    android:text="Dashboard"
+    android:textSize="40dp"
+    android:textStyle="bold"
+    tools:layout_editor_absoluteX="122dp"
+    tools:layout_editor_absoluteY="76dp" />
 
     <Button
         android:layout_width="123dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="31dp"
+        android:layout_marginStart="46dp"
         android:layout_marginTop="223dp"
         android:background="@color/colorPrimary"
         android:text="View Profile" />
 
     <Button
-        android:id="@+id/btn_viewprofile"
-        android:layout_width="wrap_content"
+        android:id="@+id/btn_view"
+        android:layout_width="123dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="222dp"
-        android:layout_marginTop="224dp"
-        android:background ="@color/colorPrimary"
-        android:text="View Appointments"
-       />
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="223dp"
+        android:layout_marginEnd="62dp"
+        android:background="@color/colorPrimary"
+        android:text="View Appointments" />
 
     <Button
         android:layout_width="135dp"
@@ -83,5 +81,5 @@
         android:layout_marginStart="223dp"
         android:layout_marginTop="340dp"
         android:background="@color/colorPrimary"
-        android:text="Schedule Appointment"/>
-        android:id="@id/btn_scheduleappointment"/>
+        android:text="Schedule Appointment" />
+
