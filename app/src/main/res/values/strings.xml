@@ -1,6 +1,14 @@
 <resources>
     <string name="app_name">E-Health</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="area_prompt">Choose an area</string>
+
+
+
+    <string-array name="area_arrays">
+        <item>Sydney CBD</item>
+        <item>Western Sydney</item>
+
+    </string-array>
+
 </resources>
