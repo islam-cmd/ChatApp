@@ -2,13 +2,24 @@
     <string name="app_name">E-Health</string>
 
     <string name="area_prompt">Choose an area</string>
-
-
-
     <string-array name="area_arrays">
         <item>Sydney CBD</item>
         <item>Western Sydney</item>
-
     </string-array>
+
+    <string name="clinic_prompt">Choose a clinic</string>
+    <string-array name="clinic_array">
+        <item>Barangaroo Clinic, 200 Barangaroo Avenue</item>
+        <item>Chippendale Clinic, 29 Broardway Street</item>
+    </string-array>
+
+    <string name="speciality_prompt">Choose a speciality</string>
+    <string-array name="speciality_arrays">
+        <item>General</item>
+        <item>Pediatrics</item>
+        <item>Respiratory</item>
+        <item>Geriatric</item>
+    </string-array>
+
 
 </resources>
