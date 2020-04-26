@@ -31,10 +31,7 @@ public class RequestConsultationActivity extends AppCompatActivity implements Ad
 
     FirebaseUser fuser;
     DatabaseReference reference;
-    private AdapterView<?> arg0;
-    private View arg1;
-    private int arg2;
-    private long arg3;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +80,7 @@ public class RequestConsultationActivity extends AppCompatActivity implements Ad
 
         String spSpeciality = String.valueOf(specialitySpinner.getSelectedItem());
         Toast.makeText(this, spArea, Toast.LENGTH_SHORT).show();
-        if(spSpeciality.contentEquals("General") ) {
+        if(spSpeciality.contentEquals("General") && spClinic.contentEquals("Lakemba Clinic, 27 Railway Parade")) {
             List<String> list = new ArrayList<String>();
             list.add("Dr Sam Smith");
             list.add("Dr Alexandra Jones");
@@ -93,7 +90,7 @@ public class RequestConsultationActivity extends AppCompatActivity implements Ad
             dataAdapter.notifyDataSetChanged();
             doctorSpinner.setAdapter(dataAdapter);
         }
-        if(spSpeciality.contentEquals("Pediatrics")) {
+        if(spSpeciality.contentEquals("Pediatrics") && spClinic.contentEquals("Lakemba Clinic, 27 Railway Parade")) {
             List<String> list = new ArrayList<String>();
             list.add("Dr John Johnston");
             list.add("Dr Adelaide White");
