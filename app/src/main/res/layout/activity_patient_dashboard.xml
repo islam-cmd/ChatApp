@@ -35,22 +35,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/bar_layout"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
+        >
 
 
-    <Button
-        android:id="@+id/ChatActivity"
-        android:layout_width="101dp"
-        android:layout_height="66dp"
-        android:layout_below="@+id/bar_layout"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="112dp"
-        android:layout_marginTop="198dp"
-        android:layout_marginEnd="46dp"
-        android:layout_marginBottom="411dp"
-        android:text="Chat Activity" />
+        <Button
+            android:id="@+id/ChatActivity"
+            android:layout_width="159dp"
+            android:layout_height="66dp"
+            android:layout_below="@+id/bar_layout"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="112dp"
+            android:layout_marginTop="200dp"
+            android:layout_marginBottom="411dp"
+            android:text="Chat Activity" />
+
+        <Button
+            android:id="@+id/OnlineConsultation"
+            android:layout_width="159dp"
+            android:layout_height="66dp"
+            android:layout_below="@+id/bar_layout"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="200dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="411dp"
+            android:text="Online Consultation" />
     </LinearLayout>
 
 </RelativeLayout>
