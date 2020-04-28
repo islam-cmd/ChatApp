@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.chatapp">
+<uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -10,8 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PatientDashboard"></activity>
-        <!-- <activity android:name=".DocResetActivity"></activity> -->
+<!--        <activity android:name=".OnlineConsultationActivity"/>-->
+        <activity android:name=".PatientDashboard" /> <!-- <activity android:name=".DocResetActivity"></activity> -->
         <!-- <activity android:name=".ResetPasswordActivity"></activity> -->
         <activity android:name=".DocMessageActivity" />
         <activity android:name=".FirstTimeActivity" />
@@ -39,6 +43,21 @@
         <activity
             android:name=".DocResetActivity"
             android:parentActivityName=".DocLoginActivity" />
+        <activity android:name=".OnlineConsultationActivity"
+            android:parentActivityName=".PatientDashboard"/>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.android.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+
     </application>
 
 </manifest>
+    <!--            android:name="android.support.v4.content.FileProvider"-->
