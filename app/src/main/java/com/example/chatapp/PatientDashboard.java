@@ -1,40 +1,56 @@
 package com.example.chatapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.OnLifecycleEvent;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import java.nio.file.Path;
 
 public class PatientDashboard extends AppCompatActivity {
-    Button chatActivity;
-    Button OnlineConsultation;
+
+    Button viewMes_btn;
+    Button logout_btn;
+    Button schedule;
+    Button view_doctors_btn;
+    Button view_appointment_btn;
+    Button contactSupport_btn;
+
+
+import java.nio.file.Path;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_patient_dashboard);
+        viewMes_btn = findViewById(R.id.ChatActivity);
+        logout_btn = findViewById(R.id.log_out);
+        view_doctors_btn = findViewById(R.id.view_doc);
 
-        chatActivity = findViewById(R.id.ChatActivity);
-        OnlineConsultation = findViewById(R.id.OnlineConsultation);
-        chatActivity.setOnClickListener(new View.OnClickListener() {
+        viewMes_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(PatientDashboard.this, MainActivity.class));
+                Intent intent = new Intent(PatientDashboard.this, MainActivity.class);
+                startActivity(intent);
+                finish(); }
+        });
+        schedule = findViewById(R.id.Schedule_appointment);
+        schedule.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               // Intent intent = new Intent(PatientDashboard.this, RequestConsultationActivity.class);
+                //startActivity(intent);
                 finish();
             }
         });
-        OnlineConsultation.setOnClickListener(new View.OnClickListener() {
+        logout_btn.setOnClickListener((new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                startActivity(new Intent(PatientDashboard.this, OnlineConsultationActivity.class));
-
+            public void onClick(View view) {
+                Intent intent = new Intent(PatientDashboard.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
             }
-        });
+        }));
     }
 }
