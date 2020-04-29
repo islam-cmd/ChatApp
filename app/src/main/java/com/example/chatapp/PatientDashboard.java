@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+
 public class PatientDashboard extends AppCompatActivity {
 
     Button viewMes_btn;
@@ -16,6 +17,8 @@ public class PatientDashboard extends AppCompatActivity {
     Button view_appointment_btn;
     Button contactSupport_btn;
 
+
+import java.nio.file.Path;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +35,6 @@ public class PatientDashboard extends AppCompatActivity {
                 startActivity(intent);
                 finish(); }
         });
-
         schedule = findViewById(R.id.Schedule_appointment);
         schedule.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,7 +44,6 @@ public class PatientDashboard extends AppCompatActivity {
                 finish();
             }
         });
-
         logout_btn.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,6 +52,5 @@ public class PatientDashboard extends AppCompatActivity {
                 finish();
             }
         }));
-
     }
 }

@@ -6,13 +6,19 @@ import static android.provider.ContactsContract.*;
 
 public class User {
 
-    private String id, username, imageURL;
-private CommonDataKinds.Email Email;
-    public User(String id, String username, String imageURL) {
+    private String id;
+    private String username;
+    private String imageURL;
+
+
+
+    private String email;
+
+    public User(String id, String username, String imageURL, String email) {
         this.id = id;
         this.username = username;
         this.imageURL = imageURL;
-
+        this.email = email;
     }
 
     public User() {
@@ -41,4 +47,7 @@ private CommonDataKinds.Email Email;
     public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
     }
+    public String getEmail() {        return email; }
+
+    public void setEmail(String email) {        this.email = email; }
 }
