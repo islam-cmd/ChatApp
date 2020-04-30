@@ -7,6 +7,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,21 +23,27 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UrgentActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+import de.hdodenhof.circleimageview.CircleImageView;
+
+public class UrgentActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     MaterialEditText title, issue;
+    TextView username;
+    CircleImageView profile_image;
     Button send_btn;
-    Spinner userSpinner;
-    List<String> doctorsList = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_urgentrequest);
+
         send_btn = findViewById(R.id.btn_sendissue);
         title = findViewById(R.id.title);
         issue = findViewById(R.id.issue);
-        userSpinner = findViewById(R.id.userSpinner);
+        username = findViewById(R.id.username);
+        profile_image = findViewById(R.id.profile_image);
+
+        final Spinner userSpinner = findViewById(R.id.userSpinner);
         userSpinner.setOnItemSelectedListener(this);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -52,8 +59,9 @@ public class UrgentActivity extends AppCompatActivity implements AdapterView.OnI
             }
         });
 
+        final List<String> doctorsList = new ArrayList<String>();
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference usersdRef = rootRef.child("Doctors");
+        DatabaseReference doctorsRef = rootRef.child("Doctors");
         ValueEventListener eventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -61,27 +69,24 @@ public class UrgentActivity extends AppCompatActivity implements AdapterView.OnI
                     String name = ds.child("username").getValue(String.class);
                     doctorsList.add(name);
                 }
+                final ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, doctorsList);
+                dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                userSpinner.setAdapter(dataAdapter);
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {}
         };
-        usersdRef.addListenerForSingleValueEvent(eventListener);
-
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, doctorsList);
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        dataAdapter.notifyDataSetChanged();
-        userSpinner.setAdapter(dataAdapter);
+        doctorsRef.addListenerForSingleValueEvent(eventListener);
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String item = parent.getItemAtPosition(position).toString();
-        Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
-        userSpinner.setSelection(position);
-
+        Toast.makeText(getApplicationContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
     }
-    public void onNothingSelected(AdapterView<?> arg0) {
-        //
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
     }
 }
