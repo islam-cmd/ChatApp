@@ -48,6 +48,17 @@ public class RequestConsultationActivity extends AppCompatActivity implements Ad
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Request Consultation");
+
+        btn_request.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String spArea = String.valueOf(areaSpinner.getSelectedItem());
+                String spClinic = String.valueOf(clinicSpinner.getSelectedItem());
+                String spSpeciality = String.valueOf(specialitySpinner.getSelectedItem());
+                String spDoctor = String.valueOf(doctorSpinner.getSelectedItem());
+
+            }
+        });
     }
 
     @Override
