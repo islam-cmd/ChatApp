@@ -40,7 +40,7 @@ public class MessageActivity extends AppCompatActivity {
 
     FirebaseUser fuser;
     DatabaseReference refrence;
-ImageButton email;
+    ImageButton email;
     ImageButton btn_send;
     EditText text_send;
 
