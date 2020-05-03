@@ -21,5 +21,22 @@
         <item>Geriatric</item>
     </string-array>
 
+    <string-array name="appointment_time">
+        <item>10 AM - 10:30 AM </item>
+        <item>10:30 AM - 11 AM </item>
+        <item>11 AM - 11:30 AM </item>
+        <item>11:30 AM - 12 PM </item>
+        <item>12 PM - 12:30 PM </item>
+        <item>12:30 PM - 1 PM </item>
+        <item>1 PM - 1:30 PM </item>
+        <item>1:30 PM - 2 PM </item>
+        <item>2 PM - 2:30 PM </item>
+        <item>2:30 PM - 3 PM </item>
+        <item>3 PM - 3:30 PM </item>
+        <item>3:30 PM - 4 PM </item>
+        <item>4 PM - 4:30 PM </item>
+        <item>4:30 PM - 5 PM </item>
+    </string-array>
+
 
 </resources>

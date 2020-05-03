@@ -25,7 +25,7 @@ import java.util.List;
 
 public class RequestConsultationActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    Spinner areaSpinner, clinicSpinner, specialitySpinner, doctorSpinner;
+    Spinner areaSpinner, clinicSpinner, specialitySpinner, doctorSpinner, appointmentSpinner;
     ImageButton back_btn;
     Button btn_request;
 
@@ -48,7 +48,6 @@ public class RequestConsultationActivity extends AppCompatActivity implements Ad
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Request Consultation");
-
     }
 
     @Override
@@ -105,6 +104,8 @@ public class RequestConsultationActivity extends AppCompatActivity implements Ad
 
 
     }
+
+
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
