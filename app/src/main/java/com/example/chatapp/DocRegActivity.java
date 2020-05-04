@@ -73,7 +73,7 @@ public class DocRegActivity extends AppCompatActivity {
         });
     }
 
-    public void Register(final String username, String email, String password) {
+    public void Register(final String username, final String email, String password) {
 
         auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -87,6 +87,7 @@ public class DocRegActivity extends AppCompatActivity {
                             refrence = FirebaseDatabase.getInstance().getReference("Doctors").child(userid);
 
                             HashMap<String, String> hashMap = new HashMap<>();
+                            hashMap.put("email", email);
                             hashMap.put("id", userid);
                             hashMap.put("username", username);
                             hashMap.put("imageURL", "default");

@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.chatapp.Adapter.MessageAdapter;
 import com.example.chatapp.Model.Chat;
+import com.example.chatapp.Model.Doctor;
 import com.example.chatapp.Model.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -39,6 +40,12 @@ public class DocMessageActivity extends AppCompatActivity {
     FirebaseUser fuser;
     DatabaseReference refrence;
 
+    ImageButton email;
+    DatabaseReference myrefrence;
+    String body;
+    String userto;
+    String usermail;
+
     ImageButton btn_send;
     EditText text_send;
 
@@ -47,11 +54,12 @@ public class DocMessageActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     Intent intent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doc_message);
-        setContentView(R.layout.activity_message);
+//        setContentView(R.layout.activity_message);
 //        Toolbar toolbar = findViewById(R.id.toolbar);
 
         androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar);
@@ -66,7 +74,7 @@ public class DocMessageActivity extends AppCompatActivity {
                 finish();
             }
         });
-
+        email = findViewById(R.id.email);
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -94,7 +102,70 @@ public class DocMessageActivity extends AppCompatActivity {
         });
 
 
+        // sending chat as email
         refrence = FirebaseDatabase.getInstance().getReference("Doctors").child(userid);
+        myrefrence = FirebaseDatabase.getInstance().getReference("Users").child(fuser.getUid());
+//        email.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                myrefrence.addValueEventListener(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                        User user = dataSnapshot.getValue(User.class);
+////                        userto = user.getUsername();
+//                        usermail = user.getEmail();
+//
+////                        body = Emailchat(fuser.getUid(), userid, user.getImageURL());
+//                    body = "ana sh3'al";
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                    }
+//                });
+//                refrence.addValueEventListener(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                        Doctor doc = dataSnapshot.getValue(Doctor.class);
+//                    userto  = doc.getUsername();
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                    }
+//                });
+//
+//
+//                Intent i = new Intent(Intent.ACTION_SEND);
+//                i.setType("message/rfc822");
+//                i.putExtra(Intent.EXTRA_EMAIL, new String[]{usermail});
+//                i.putExtra(Intent.EXTRA_SUBJECT, "Chat with "+ userto);
+//                i.putExtra(Intent.EXTRA_TEXT, body);
+//                try {
+//                    startActivity(Intent.createChooser(i, "Send mail..."));
+//                } catch (android.content.ActivityNotFoundException ex) {
+//                    Toast.makeText(DocMessageActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
+        email.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Intent.ACTION_SEND);
+                i.setType("message/rfc822");
+                i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"i.tookhy@gmail.com"});
+                i.putExtra(Intent.EXTRA_SUBJECT, "subject of email");
+                i.putExtra(Intent.EXTRA_TEXT   , "body of email");
+                try {
+                    startActivity(Intent.createChooser(i, "Send mail..."));
+                } catch (android.content.ActivityNotFoundException ex) {
+                    Toast.makeText(DocMessageActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+//        refrence = FirebaseDatabase.getInstance().getReference("Doctors").child(userid);
 
         refrence.addValueEventListener(new ValueEventListener() {
             @Override
@@ -106,7 +177,7 @@ public class DocMessageActivity extends AppCompatActivity {
                 } else {
                     Glide.with(DocMessageActivity.this).load(user.getImageURL()).into(profile_image);
                 }
-                readMessage(fuser.getUid(),userid,user.getImageURL());
+                readMessage(fuser.getUid(), userid, user.getImageURL());
             }
 
             @Override
@@ -115,6 +186,7 @@ public class DocMessageActivity extends AppCompatActivity {
             }
         });
     }
+
     private void sendMessage(String sender, String reciever, String message) {
 
 
@@ -127,6 +199,7 @@ public class DocMessageActivity extends AppCompatActivity {
 
 
     }
+
     public boolean onCreateOptionsMenu(Menu menu) {
 
         getMenuInflater().inflate(R.menu.menu, menu);
@@ -171,5 +244,32 @@ public class DocMessageActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private String Emailchat(final String myid, final String userid, final String imageurl) {
+
+        mchat = new ArrayList<>();
+        refrence = FirebaseDatabase.getInstance().getReference("Chats");
+        refrence.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                mchat.clear();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Chat chat = snapshot.getValue(Chat.class);
+                    if (chat.getReciever().equals(myid) && chat.getSender().equals(userid) ||
+                            chat.getReciever().equals(userid) && chat.getSender().equals(myid)) {
+                        mchat.add(chat);
+                    }
+//                    messageAdapter = new MessageAdapter(DocMessageActivity.this, mchat, imageurl);
+//                    recyclerView.setAdapter(messageAdapter);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        return mchat.toString();
     }
 }

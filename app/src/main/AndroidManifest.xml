@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.chatapp" >
+    package="com.example.chatapp">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -16,8 +20,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
-
+        android:theme="@style/AppTheme">
+        <activity android:name=".ViewDoctors"></activity>
+        <!-- <activity android:name=".OnlineConsultationActivity"/> -->
+        <activity android:name=".PatientDashboard" /> <!-- <activity android:name=".DocResetActivity"></activity> -->
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -32,10 +38,8 @@
 
         <activity
             android:name=".GpsActivity"
-            android:label="@string/title_activity_gps"
-            android:exported="true">
-        </activity>
-        <!-- <activity android:name=".DocResetActivity"></activity> -->
+            android:exported="true"
+            android:label="@string/title_activity_gps"></activity> <!-- <activity android:name=".DocResetActivity"></activity> -->
         <!-- <activity android:name=".ResetPasswordActivity"></activity> -->
         <activity android:name=".DocMessageActivity" />
         <activity android:name=".FirstTimeActivity" />
@@ -43,7 +47,7 @@
         <activity android:name=".DocMainActivity" />
         <activity android:name=".DocRegActivity" />
         <activity android:name=".MessageActivity" />
-        <activity android:name=".StartActivity" >
+        <activity android:name=".StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -63,6 +67,19 @@
         <activity
             android:name=".DocResetActivity"
             android:parentActivityName=".DocLoginActivity" />
+        <activity
+            android:name=".OnlineConsultationActivity"
+            android:parentActivityName=".PatientDashboard" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.android.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>

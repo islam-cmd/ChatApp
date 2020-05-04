@@ -14,6 +14,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -38,6 +40,7 @@ public class DocMainActivity extends AppCompatActivity {
     FirebaseUser firebaseUser;
     DatabaseReference refrence;
     TextView username;
+    Button updateLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +54,17 @@ public class DocMainActivity extends AppCompatActivity {
         profile_image = findViewById(R.id.profile_image);
         username = findViewById(R.id.username);
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        refrence = FirebaseDatabase.getInstance().getReference("Doctors").child(firebaseUser.getUid());
+        refrence = FirebaseDatabase.getInstance().getReference("Doctors").child(firebaseUser.getUid()); //set reference to logged-in doctor
+        updateLocation = findViewById(R.id.updateLocation);
+
+        //if update location button is pressed
+        updateLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                 refrence.child("location").setValue("updated location");
+
+            }
+        });
 
         refrence.addValueEventListener(new ValueEventListener() {
             @Override
