@@ -13,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.chatapp.Model.UserInfo;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -26,7 +28,6 @@ public class UserInfoInputActivity extends AppCompatActivity implements DatePick
     TextView mDate;
     int day,month,year;
     String date;
-
     DatabaseReference databaseRef;
 
     @Override
@@ -73,6 +74,7 @@ public class UserInfoInputActivity extends AppCompatActivity implements DatePick
         if (TextUtils.isEmpty(firstname) || TextUtils.isEmpty(lastname) || TextUtils.isEmpty(DOB)) {
             Toast.makeText(UserInfoInputActivity.this, "All Fields are Required", Toast.LENGTH_SHORT).show();
         } else {
+//            String id = FirebaseAuth.getInstance().getCurrentUser().getUid().trim();
             String id = databaseRef.push().getKey();
 
             UserInfo user = new UserInfo(id, firstname, lastname, DOB);
