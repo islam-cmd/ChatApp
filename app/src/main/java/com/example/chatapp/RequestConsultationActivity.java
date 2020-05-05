@@ -71,11 +71,8 @@ public class RequestConsultationActivity extends AppCompatActivity implements Ad
                 } else {
                     Toast.makeText(RequestConsultationActivity.this, "Please fill out all of the text boxes", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
-
-
     }
 
 
@@ -139,7 +136,8 @@ public class RequestConsultationActivity extends AppCompatActivity implements Ad
     DatabaseReference doctorsRef = rootRef.child("Doctors");
     ValueEventListener eventListener = new ValueEventListener() {
 
-        //need to set avaiable appointment times still
+        //need to set available appointment times still that is what im trying to do next - other thoughts were that we could set all available times and
+        // then doctors can decline appointment requests
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
             for(DataSnapshot ds : dataSnapshot.getChildren()) {
