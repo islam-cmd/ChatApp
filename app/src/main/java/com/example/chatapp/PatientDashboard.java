@@ -18,7 +18,6 @@ public class PatientDashboard extends AppCompatActivity {
     Button contactSupport_btn;
 
 
-import java.nio.file.Path;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
