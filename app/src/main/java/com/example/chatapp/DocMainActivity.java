@@ -4,13 +4,21 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -35,12 +43,13 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class DocMainActivity extends AppCompatActivity {
+public class DocMainActivity extends AppCompatActivity implements LocationListener {
     CircleImageView profile_image;
     FirebaseUser firebaseUser;
     DatabaseReference refrence;
     TextView username;
     Button updateLocation;
+    private LocationManager locationManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,16 +64,25 @@ public class DocMainActivity extends AppCompatActivity {
         username = findViewById(R.id.username);
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         refrence = FirebaseDatabase.getInstance().getReference("Doctors").child(firebaseUser.getUid()); //set reference to logged-in doctor
-        updateLocation = findViewById(R.id.updateLocation);
 
-        //if update location button is pressed
-        updateLocation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                 refrence.child("location").setValue("updated location");
-
-            }
-        });
+        //get Last known location of user----------------------------------------------------------------------
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        //permissions check
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
+                        != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        if (locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
+            Location location = locationManager.getLastKnownLocation(locationManager.NETWORK_PROVIDER);
+            onLocationChanged(location);
+        }
+        if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            Location location = locationManager.getLastKnownLocation(locationManager.GPS_PROVIDER);
+            onLocationChanged(location);
+        }
+        //-----------------------------------------------------------------------------------------------------
 
         refrence.addValueEventListener(new ValueEventListener() {
             @Override
@@ -117,7 +135,20 @@ public class DocMainActivity extends AppCompatActivity {
 
     }
 
-        class ViewPagerAdapter extends FragmentPagerAdapter {
+    //override locationListener methods
+    //store location (longitude and latitude) in database
+    @Override
+    public void onLocationChanged(Location location) {
+        double longitude = location.getLongitude();
+        double latitude = location.getLatitude();
+        refrence.child("longitude").setValue(longitude);
+        refrence.child("latitude").setValue(latitude);
+    }
+    @Override public void onStatusChanged(String s, int i, Bundle bundle) {}
+    @Override public void onProviderEnabled(String s) {}
+    @Override public void onProviderDisabled(String s) {}
+
+    class ViewPagerAdapter extends FragmentPagerAdapter {
             private ArrayList<Fragment> fragments;
             private ArrayList<String> titles;
 
