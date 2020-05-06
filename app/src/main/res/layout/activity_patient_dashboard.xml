@@ -106,6 +106,19 @@
         android:layout_marginTop="582dp"
         android:text="Log Out"
         android:background="@color/colorAccent"/>
+    
+    <Button
+        android:id="@+id/Urgent_Case"
+        android:layout_width="116dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="145dp"
+        android:layout_marginTop="468dp"
+        android:background="@color/colorAccent"
+        android:text="Urgent Case" />
+
 
 
 </RelativeLayout>
