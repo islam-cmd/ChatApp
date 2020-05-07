@@ -16,9 +16,9 @@ public class PatientDashboard extends AppCompatActivity {
     Button view_doctors_btn;
     Button view_appointment_btn;
     Button contactSupport_btn;
+    Button emergency_btn; 
 
 
-import java.nio.file.Path;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +27,8 @@ import java.nio.file.Path;
         viewMes_btn = findViewById(R.id.ChatActivity);
         logout_btn = findViewById(R.id.log_out);
         view_doctors_btn = findViewById(R.id.view_doc);
+        emergency_btn = findViewById(R.id.Urgent_Case);
+        
 
         viewMes_btn.setOnClickListener(new View.OnClickListener() {
             @Override
