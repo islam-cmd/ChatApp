@@ -36,8 +36,16 @@
                 android:id="@+id/email"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginLeft="100dp"/>
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/ic_action_email"/>
 
+            <ImageButton
+
+                android:id="@+id/call"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/ic_action_call"/>
 
         </androidx.appcompat.widget.Toolbar>
 
