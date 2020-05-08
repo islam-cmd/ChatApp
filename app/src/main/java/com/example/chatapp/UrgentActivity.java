@@ -1,5 +1,6 @@
 package com.example.chatapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,9 +11,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.bumptech.glide.Glide;
+import com.example.chatapp.Model.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -33,9 +37,10 @@ public class UrgentActivity extends AppCompatActivity implements AdapterView.OnI
     MaterialEditText title, issue;
     TextView username;
     CircleImageView profile_image;
-    Button send_btn;
+    Button send_btn, back_btn;
     FirebaseUser fuser;
     String doctorid;
+    DatabaseReference currentUser;
     public static String toReturn;
 
     @Override
@@ -44,6 +49,7 @@ public class UrgentActivity extends AppCompatActivity implements AdapterView.OnI
         setContentView(R.layout.activity_urgentrequest);
 
         send_btn = findViewById(R.id.btn_sendissue);
+        back_btn = findViewById(R.id.btn_back);
         title = findViewById(R.id.title);
         issue = findViewById(R.id.issue);
         username = findViewById(R.id.username);
@@ -56,8 +62,7 @@ public class UrgentActivity extends AppCompatActivity implements AdapterView.OnI
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Urgent Case");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("");
 
         send_btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -72,6 +77,35 @@ public class UrgentActivity extends AppCompatActivity implements AdapterView.OnI
                 }
                 title.setText("");
                 issue.setText("");
+            }
+        });
+
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(UrgentActivity.this, PatientDashboard.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        currentUser = FirebaseDatabase.getInstance().getReference("Users").child(fuser.getUid());
+
+        currentUser.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                User user = dataSnapshot.getValue(User.class);
+                username.setText(user.getUsername());
+                if (user.getImageURL().equals("default")) {
+                    profile_image.setImageResource(R.mipmap.ic_launcher);
+
+                } else {
+                    Glide.with(UrgentActivity.this).load(user.getImageURL()).into(profile_image);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
 
