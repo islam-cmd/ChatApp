@@ -31,6 +31,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Viewing_Patients_activity extends AppCompatActivity {
+    
+    //IMPORTANT NOTE
+//I am still experiencing errors with this. 
 
 
     Button viewPatHistoryBtn;
