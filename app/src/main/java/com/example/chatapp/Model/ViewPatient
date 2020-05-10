@@ -1,0 +1,14 @@
+package com.example.chatapp.Model;
+
+public class View_Patient {
+    private String id;
+    private String username;
+    private Double time;
+
+
+    public View_Patient(String id, String username, Double time) {
+        this.id = id;
+        this.username = username;
+        this.time = time;
+    }
+}
