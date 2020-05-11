@@ -33,6 +33,7 @@ import java.util.List;
 public class Viewing_AppointmentActivity extends AppCompatActivity {
 
     Button returnbtn;
+    Button cancelbtn;
     Button schedulebtn;
     FirebaseAuth auth;
     FirebaseDatabase database;
