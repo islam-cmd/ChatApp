@@ -55,6 +55,7 @@ public class Viewing_AppointmentActivity extends AppCompatActivity {
         schedulebtn = findViewById(R.id.Schedule_appointment2);
         viewappList = new ArrayList<>();
         databaseRef = FirebaseDatabase.getInstance().getReference("Appointment");
+        cancelbtn = findViewById(R.id.cancel_appointment);
 
         returnbtn.setOnClickListener(new View.OnClickListener() {
             @Override
