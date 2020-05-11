@@ -10,6 +10,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -17,8 +18,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
+import com.example.chatapp.Model.Patient;
 import com.example.chatapp.Model.User;
-import com.example.chatapp.Model.View_Patient;
+import com.example.chatapp.Model.ViewPatientList;
+import com.example.chatapp.Model.Patient;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -39,8 +42,9 @@ public class Viewing_Patients_activity extends AppCompatActivity {
     FirebaseUser firebaseUser;
     DatabaseReference reference;
     Button dashboard_backbtn;
-    ViewPager viewpat;
+    ListView viewpat;
     Toolbar patToolbar;
+    List<Patient> viewPatientList;
 
 
     @Override
@@ -50,22 +54,30 @@ public class Viewing_Patients_activity extends AppCompatActivity {
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
         viewpat = findViewById(R.id.pat_view);
+        viewPatHistoryBtn = findViewById(R.id.history);
+        //viewPatHistoryBtn.setEnabled(false);
         //atToolbar = findViewById(R.id.patient_bar);
         TabLayout docTab = findViewById(R.id.tab_patients);
+        viewPatientList = new ArrayList<>();
         reference.addValueEventListener(new ValueEventListener() {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                View_Patient patient = dataSnapshot.getValue(View_Patient.class);
+
+               for (DataSnapshot dataSnapshot1: dataSnapshot.getChildren())
+               {   viewPatientList.clear();
+                   Patient patient = dataSnapshot.getValue(Patient.class);
+                   viewPatientList.add(patient);
+               }
+                ViewPatientList adapter = new ViewPatientList(Viewing_Patients_activity.this, viewPatientList);
+               viewpat.setAdapter(adapter);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
 
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
-        viewpat.setAdapter(viewPagerAdapter);
-        docTab.setupWithViewPager(viewpat);
+
 
         dashboard_backbtn = findViewById(R.id.dashboard_back);
         dashboard_backbtn.setOnClickListener(new View.OnClickListener() {
@@ -77,43 +89,21 @@ public class Viewing_Patients_activity extends AppCompatActivity {
             }
         });
 
-    }
+        viewPatHistoryBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Viewing_Patients_activity.this, ViewPatHistory.class);
+                startActivity(intent);
+                finish();
 
-}
-
-class ViewPagerAdapter extends FragmentPagerAdapter {
-    private ArrayList<Fragment> patientFragments;
-    private ArrayList<String> patientNames;
+            }
 
 
-    ViewPagerAdapter(@NonNull FragmentManager fm) {
-        super(fm);
-        this.patientFragments = new ArrayList<>();
-        this.patientNames = new ArrayList<>();
-    }
+    });
 
-    @NonNull
-    @Override
-    public Fragment getItem(int position) {
-        return patientFragments.get(position);
-    }
+}}
 
-    @Override
-    public int getCount() {
-        return patientFragments.size();
-    }
 
-    public void addFragment(Fragment fragment, String title) {
-        patientFragments.add(fragment);
-        patientNames.add(title);
-    }
-
-    @Nullable
-    @Override
-    public CharSequence getPageTitle(int position) {
-        return patientNames.get(position);
-    }
-}
 
 
 
