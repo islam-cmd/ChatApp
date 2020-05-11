@@ -1,0 +1,78 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Viewing_AppointmentActivity"
+    android:orientation="horizontal">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/doctor_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="50sp"
+            tools:ignore="MissingConstraints">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar_app"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimaryDark">
+
+                </androidx.appcompat.widget.Toolbar>
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tab_layout_patient"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:background="@color/colorPrimaryDark"
+                    app:tabIndicatorColor="#fff"
+                    app:tabSelectedTextColor="#fff"
+                    app:tabTextColor="#fff" />
+
+                <TextView
+                    android:id="@+id/username"
+                    android:layout_width="329dp"
+                    android:layout_height="39dp"
+                    android:layout_marginStart="25dp"
+                    android:text=""
+                    android:textColor="#fff"
+                    android:textStyle="bold" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <ListView
+            android:id="@+id/view_appointment"
+            android:layout_width="410dp"
+            android:layout_height="503dp"
+            android:layout_marginBottom="52dp"
+            app:layout_constraintBottom_toBottomOf="@+id/dashboard"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/patient_bar"
+            tools:ignore="UnknownIdInLayout" />
+
+        <Button
+            android:id="@+id/dashboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="296dp"
+            android:layout_marginBottom="24dp"
+            android:text="Back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/Schedule_appointment2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="28dp"
+            android:layout_marginBottom="16dp"
+            android:text="Schedule Appointment"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
