@@ -1,11 +1,13 @@
 package com.example.chatapp;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -28,6 +30,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.sinch.android.rtc.PushPair;
+import com.sinch.android.rtc.Sinch;
+import com.sinch.android.rtc.SinchClient;
+import com.sinch.android.rtc.calling.Call;
+import com.sinch.android.rtc.calling.CallClient;
+import com.sinch.android.rtc.calling.CallClientListener;
+import com.sinch.android.rtc.calling.CallListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -51,6 +60,10 @@ public class DocMessageActivity extends AppCompatActivity {
 
     MessageAdapter messageAdapter;
     List<Chat> mchat;
+
+    SinchClient sinchClient;
+    Call call;
+    ImageButton calling ;
 
     RecyclerView recyclerView;
     Intent intent;
@@ -100,56 +113,35 @@ public class DocMessageActivity extends AppCompatActivity {
                 text_send.setText("");
             }
         });
+        calling = findViewById(R.id.call);
+        calling.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CallUser(userid);
+//                Intent intent = new Intent(getApplicationContext(), FirstTimeActivity.class);
+//                intent.putExtra("callerId", fuser.getUid());
+//                intent.putExtra("recipientId", userid);
+//                startActivity(intent);
+//                startActivity(new Intent(DocMessageActivity.this, FirstTimeActivity.class));
+            }
+        });
+        sinchClient = Sinch.getSinchClientBuilder()
+                .context(this)
+                .userId(fuser.getUid())
+                .applicationKey("2b7f52f2-8d67-423a-91ac-aedbac787a2e")
+                .applicationSecret("shuCuCqMFkaAOiTTHNiuRQ==")
+                .environmentHost("clientapi.sinch.com")
+                .build();
+        sinchClient.setSupportCalling(true);
+        sinchClient.startListeningOnActiveConnection();
+        sinchClient.start();
 
+        sinchClient.getCallClient().addCallClientListener(new DocMessageActivity.SinchCallClientListener());
 
         // sending chat as email
         refrence = FirebaseDatabase.getInstance().getReference("Doctors").child(userid);
         myrefrence = FirebaseDatabase.getInstance().getReference("Users").child(fuser.getUid());
-//        email.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                myrefrence.addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                        User user = dataSnapshot.getValue(User.class);
-////                        userto = user.getUsername();
-//                        usermail = user.getEmail();
 //
-////                        body = Emailchat(fuser.getUid(), userid, user.getImageURL());
-//                    body = "ana sh3'al";
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//                    }
-//                });
-//                refrence.addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                        Doctor doc = dataSnapshot.getValue(Doctor.class);
-//                    userto  = doc.getUsername();
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//                    }
-//                });
-//
-//
-//                Intent i = new Intent(Intent.ACTION_SEND);
-//                i.setType("message/rfc822");
-//                i.putExtra(Intent.EXTRA_EMAIL, new String[]{usermail});
-//                i.putExtra(Intent.EXTRA_SUBJECT, "Chat with "+ userto);
-//                i.putExtra(Intent.EXTRA_TEXT, body);
-//                try {
-//                    startActivity(Intent.createChooser(i, "Send mail..."));
-//                } catch (android.content.ActivityNotFoundException ex) {
-//                    Toast.makeText(DocMessageActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
         email.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -271,5 +263,95 @@ public class DocMessageActivity extends AppCompatActivity {
             }
         });
         return mchat.toString();
+    }
+
+
+    private class SinchCallListener implements CallListener {
+
+
+        @Override
+        public void onCallProgressing(com.sinch.android.rtc.calling.Call call) {
+            Toast.makeText(DocMessageActivity.this, "Ringing...", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onCallEstablished(com.sinch.android.rtc.calling.Call call) {
+            Toast.makeText(DocMessageActivity.this, "Call estblished", Toast.LENGTH_SHORT).show();
+
+        }
+
+        @Override
+        public void onCallEnded(com.sinch.android.rtc.calling.Call endedcall) {
+            Toast.makeText(DocMessageActivity.this, "Call ended", Toast.LENGTH_SHORT).show();
+            call = null;
+            endedcall.hangup();
+        }
+
+        @Override
+        public void onShouldSendPushNotification(com.sinch.android.rtc.calling.Call call, List<PushPair> list) {
+
+        }
+    }
+
+    private class SinchCallClientListener implements CallClientListener {
+
+        @Override
+        public void onIncomingCall(CallClient callClient, final com.sinch.android.rtc.calling.Call Incomingcall ) {
+            AlertDialog alertDialog = new AlertDialog.Builder(DocMessageActivity.this).create();
+            alertDialog.setTitle("Calling");
+            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Reject", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                    call.hangup();
+                }
+
+            });
+            alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Pick", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    call = Incomingcall;
+                    call.answer();
+                    call.addCallListener(new DocMessageActivity.SinchCallListener());
+                    Toast.makeText(getApplicationContext(), "Call has started", Toast.LENGTH_LONG).show();
+                    AlertDialog alertDialog1 = new AlertDialog.Builder(DocMessageActivity.this).create();
+                    alertDialog1.setTitle("Calling");
+                    alertDialog1.setButton(AlertDialog.BUTTON_NEUTRAL, "Hang Up", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                            call.hangup();
+                        }
+                    });
+                alertDialog1.show();
+                }
+            });
+            alertDialog.show();
+        }
+
+    }
+
+
+    public void CallUser(String id){
+        if(call ==null){
+            call = sinchClient.getCallClient().callUser(id);
+
+            call.addCallListener(new DocMessageActivity.SinchCallListener());
+            openCallerDialog(call);
+        }
+    }
+
+    private void openCallerDialog(final Call call) {
+        AlertDialog alertDialog = new AlertDialog.Builder(DocMessageActivity.this).create();
+        alertDialog.setTitle("ALERT");
+        alertDialog.setMessage("CALLING");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Hang up", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                call.hangup();
+            }
+        });
+        alertDialog.show();
     }
 }
