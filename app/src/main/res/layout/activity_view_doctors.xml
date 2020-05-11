@@ -6,31 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".ViewDoctors">
 
-    <LinearLayout
+    <fragment
+        android:id="@+id/fragment"
+        android:name="com.example.chatapp.Fragments.ViewDoctorsFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:weightSum="100">
-
-        <ListView
-            android:id="@+id/doc_list"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="50">
-        </ListView>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="50"
-            android:id="@+id/map_container">
-
-            <com.google.android.gms.maps.MapView
-                android:id="@+id/doc_list_map"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-        </RelativeLayout>
-
-    </LinearLayout>
+        android:layout_height="299dp" />
 </RelativeLayout>

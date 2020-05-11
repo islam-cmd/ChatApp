@@ -16,6 +16,8 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -32,6 +34,9 @@ import com.example.chatapp.Fragments.DoctorsFragment;
 import com.example.chatapp.Fragments.UsersFragment;
 import com.example.chatapp.Model.Doctor;
 import com.example.chatapp.Model.User;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -41,9 +46,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
-public class DocMainActivity extends AppCompatActivity implements LocationListener {
+public class DocMainActivity extends AppCompatActivity {
     CircleImageView profile_image;
     FirebaseUser firebaseUser;
     DatabaseReference refrence;
@@ -74,14 +81,33 @@ public class DocMainActivity extends AppCompatActivity implements LocationListen
                         != PackageManager.PERMISSION_GRANTED) {
             return;
         }
-        if (locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
-            Location location = locationManager.getLastKnownLocation(locationManager.NETWORK_PROVIDER);
-            onLocationChanged(location);
+
+        if (locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER) || locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+            String provider = new String();
+            if (locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)){
+                provider = LocationManager.NETWORK_PROVIDER;
+            }
+            else if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+                provider = LocationManager.GPS_PROVIDER;
+            }
+
+            locationManager.requestLocationUpdates(provider, 0, 0, new LocationListener() {
+                @Override
+                public void onLocationChanged(Location location) {
+                    double latitude = location.getLatitude();
+                    double longitude = location.getLongitude();
+                    refrence.child("longitude").setValue(longitude);
+                    refrence.child("latitude").setValue(latitude);
+                }
+
+                @Override public void onStatusChanged(String s, int i, Bundle bundle) {}
+                @Override public void onProviderEnabled(String s) {}
+                @Override public void onProviderDisabled(String s) {
+
+                }
+            });
         }
-        if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-            Location location = locationManager.getLastKnownLocation(locationManager.GPS_PROVIDER);
-            onLocationChanged(location);
-        }
+
         //-----------------------------------------------------------------------------------------------------
 
         refrence.addValueEventListener(new ValueEventListener() {
@@ -134,19 +160,6 @@ public class DocMainActivity extends AppCompatActivity implements LocationListen
         return false;
 
     }
-
-    //override locationListener methods
-    //store location (longitude and latitude) in database
-    @Override
-    public void onLocationChanged(Location location) {
-        double longitude = location.getLongitude();
-        double latitude = location.getLatitude();
-        refrence.child("longitude").setValue(longitude);
-        refrence.child("latitude").setValue(latitude);
-    }
-    @Override public void onStatusChanged(String s, int i, Bundle bundle) {}
-    @Override public void onProviderEnabled(String s) {}
-    @Override public void onProviderDisabled(String s) {}
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
             private ArrayList<Fragment> fragments;
