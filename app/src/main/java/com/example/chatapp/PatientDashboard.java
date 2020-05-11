@@ -46,6 +46,14 @@ public class PatientDashboard extends AppCompatActivity {
                 finish();
             }
         });
+        emergency_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                 Intent intent = new Intent(PatientDashboard.this, UrgentActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         logout_btn.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View view) {
