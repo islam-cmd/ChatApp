@@ -22,6 +22,7 @@ import com.example.chatapp.ViewDoctorInfoActivity;
 import java.util.List;
 
 public class ViewDoctorAdapter extends RecyclerView.Adapter<ViewDoctorAdapter.ViewHolder> {
+    public static String doctor_Id;
     private Context mContext;
     private List<Doctor> mUsers;
     private static final String TAG = "ViewDoctorAdapter";
@@ -46,11 +47,14 @@ public class ViewDoctorAdapter extends RecyclerView.Adapter<ViewDoctorAdapter.Vi
             Glide.with(mContext).load(doctor.getImageURL()).into(holder.profile_image);
         }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "view doctor listener clicked");
+                Log.d(TAG, "doctor clicked with user id" + doctor.getId());
                 Intent intent = new Intent(mContext, ViewDoctorInfoActivity.class);
                 intent.putExtra("userid", doctor.getId());
+                doctor_Id = doctor.getId();
+
 //                intent.putExtra(" userto", doctor.getUsername());
                 mContext.startActivity(intent);
             }

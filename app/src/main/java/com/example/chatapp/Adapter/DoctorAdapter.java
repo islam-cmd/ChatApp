@@ -50,7 +50,7 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.ViewHolder
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "doctor listener clicked");
+                Log.d(TAG, "doctor clicked with user id" + doctor.getId());
                 Intent intent = new Intent(mContext, DocMessageActivity.class);
                 intent.putExtra("userid", doctor.getId());
 //                intent.putExtra(" userto", doctor.getUsername());

@@ -25,22 +25,32 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/doc_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/doc_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/doc_spec"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Clinic" />
 
     </LinearLayout>
+
+    <fragment
+        android:id="@+id/fragment2"
+        android:name="com.example.chatapp.Fragments.MapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="319dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginBottom="0dp" />
 </RelativeLayout>

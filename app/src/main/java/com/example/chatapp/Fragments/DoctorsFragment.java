@@ -49,17 +49,17 @@ public class DoctorsFragment extends Fragment {
         DatabaseReference refrence = FirebaseDatabase.getInstance().getReference("Doctors");
 //        DatabaseReference docRef  = FirebaseDatabase.getInstance().getReference();
     refrence.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                mUsers.clear();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Doctor user = snapshot.getValue(Doctor.class);
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        mUsers.clear();
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            Doctor user = snapshot.getValue(Doctor.class);
 //                    assert user != null;
 //                    assert firebaseUser != null;
 //                    if (!user.getId().equals(firebaseUser.getUid())) {
-                    mUsers.add(user);
+                            mUsers.add(user);
 //                    }
-                }
+                        }
              doctorAdapter = new DoctorAdapter(getContext(), mUsers);
                 recyclerView.setAdapter(doctorAdapter);
 
