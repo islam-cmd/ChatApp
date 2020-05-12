@@ -65,6 +65,7 @@ public class MessageActivity extends AppCompatActivity {
     SinchClient sinchClient;
     Call call;
     ImageButton calling ;
+    ImageButton Videocall;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -151,6 +152,18 @@ public class MessageActivity extends AppCompatActivity {
 
             }
         });
+
+
+        Videocall = findViewById(R.id.VideoCall);
+//        Videocall.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i = new Intent(MessageActivity.this, FirstTimeActivity.class);
+//                String strName = userid;
+//                i.putExtra("userid", strName);
+//                startActivity(i);
+//            }
+//        });
         calling = findViewById(R.id.call);
         calling.setOnClickListener(new View.OnClickListener() {
             @Override
