@@ -5,14 +5,16 @@ public class UserInfo {
     String firstName;
     String lastName;
     String dateOfBirth;
+    String personalInfo;
     public UserInfo(){
 
     }
-    public UserInfo(String id, String firstName, String lastName,String dateOfBirth){
+    public UserInfo(String id, String firstName, String lastName,String dateOfBirth,String personalInfo){
         this.id= id;
         this.firstName=firstName;
         this.lastName=lastName;
         this.dateOfBirth=dateOfBirth;
+        this.personalInfo=personalInfo;
     }
 
     public String getId()
@@ -26,5 +28,6 @@ public class UserInfo {
         return lastName;
     }
     public String getDateOfBirth(){return dateOfBirth;}
+    public String getPersonalInfo(){return personalInfo;}
 }
 

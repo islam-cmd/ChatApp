@@ -26,6 +26,7 @@ public class UserInfoInputActivity extends AppCompatActivity implements DatePick
     TextView mDate;
     int day,month,year;
     String date;
+   EditText mPersonalInfo;
 
     DatabaseReference databaseRef;
 
@@ -36,7 +37,7 @@ public class UserInfoInputActivity extends AppCompatActivity implements DatePick
         databaseRef = FirebaseDatabase.getInstance().getReference("user info");
 
 
-
+        mPersonalInfo=(EditText) findViewById(R.id.PersonalInfo);
         mPickDate=(Button) findViewById(R.id.PickDate);
         mFirst = (EditText) findViewById(R.id.FirstName);
         mLast = (EditText) findViewById(R.id.LastName);
@@ -70,12 +71,13 @@ public class UserInfoInputActivity extends AppCompatActivity implements DatePick
         String firstname = mFirst.getText().toString();
         String lastname = mLast.getText().toString();
         String DOB = mDate.getText().toString();
+        String PersonalInfo= mPersonalInfo.getText().toString();
         if (TextUtils.isEmpty(firstname) || TextUtils.isEmpty(lastname) || TextUtils.isEmpty(DOB)) {
             Toast.makeText(UserInfoInputActivity.this, "All Fields are Required", Toast.LENGTH_SHORT).show();
         } else {
             String id = databaseRef.push().getKey();
 
-            UserInfo user = new UserInfo(id, firstname, lastname, DOB);
+            UserInfo user = new UserInfo(id, firstname, lastname, DOB,PersonalInfo);
             databaseRef.child(id).setValue(user);
             Toast.makeText(UserInfoInputActivity.this, "User added", Toast.LENGTH_SHORT).show();
         }
