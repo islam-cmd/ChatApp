@@ -21,8 +21,8 @@ public class DoctorDashboard extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_doctor_dashboard);
-        viewMes_btn = findViewById(R.id.ChatActivity);
+        setContentView(R.layout.activity_doc_dashboard);
+        viewMes_btn = findViewById(R.id.view);
         logout_btn = findViewById(R.id.log_out);
         view_doctors_btn = findViewById(R.id.view_doc);
         emergency_btn = findViewById(R.id.Urgent_Case);
@@ -35,14 +35,14 @@ public class DoctorDashboard extends AppCompatActivity {
                 finish(); }
         });
         schedule = findViewById(R.id.Schedule_appointment);
-        schedule.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        //schedule.setOnClickListener(new View.OnClickListener() {
+          //  @Override
+            //public void onClick(View view) {
                 // Intent intent = new Intent(PatientDashboard.this, RequestConsultationActivity.class);
                 //startActivity(intent);
 //                finish();
-            }
-        });
+            //}
+       // });
         logout_btn.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View view) {
