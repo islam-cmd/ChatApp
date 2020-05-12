@@ -74,7 +74,7 @@ public class UserInfoInputActivity extends AppCompatActivity implements DatePick
         if (TextUtils.isEmpty(firstname) || TextUtils.isEmpty(lastname) || TextUtils.isEmpty(DOB)) {
             Toast.makeText(UserInfoInputActivity.this, "All Fields are Required", Toast.LENGTH_SHORT).show();
         } else {
-//            String id = FirebaseAuth.getInstance().getCurrentUser().getUid().trim();
+     //    String id = FirebaseAuth.getInstance().getCurrentUser().getUid().trim();
             String id = databaseRef.push().getKey();
 
             UserInfo user = new UserInfo(id, firstname, lastname, DOB);

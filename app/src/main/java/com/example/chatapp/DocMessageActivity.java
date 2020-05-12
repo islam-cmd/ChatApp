@@ -67,6 +67,7 @@ public class DocMessageActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     Intent intent;
+     ImageButton Videocall;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,6 +114,17 @@ public class DocMessageActivity extends AppCompatActivity {
                 text_send.setText("");
             }
         });
+
+
+
+
+        Videocall = findViewById(R.id.VideoCall);
+//        Videocall.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(DocMessageActivity.this, FirstTimeActivity.class));
+//            }
+//        });
         calling = findViewById(R.id.call);
         calling.setOnClickListener(new View.OnClickListener() {
             @Override
