@@ -15,6 +15,8 @@ import android.widget.Toast;
 import com.example.chatapp.Model.UserInfo;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Calendar;
 
@@ -27,6 +29,7 @@ public class UserInfoInputActivity extends AppCompatActivity implements DatePick
     int day,month,year;
     String date;
    EditText mPersonalInfo;
+
 
     DatabaseReference databaseRef;
 
@@ -72,12 +75,14 @@ public class UserInfoInputActivity extends AppCompatActivity implements DatePick
         String lastname = mLast.getText().toString();
         String DOB = mDate.getText().toString();
         String PersonalInfo= mPersonalInfo.getText().toString();
+        String UID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
         if (TextUtils.isEmpty(firstname) || TextUtils.isEmpty(lastname) || TextUtils.isEmpty(DOB)) {
             Toast.makeText(UserInfoInputActivity.this, "All Fields are Required", Toast.LENGTH_SHORT).show();
         } else {
             String id = databaseRef.push().getKey();
 
-            UserInfo user = new UserInfo(id, firstname, lastname, DOB,PersonalInfo);
+            UserInfo user = new UserInfo(id, firstname, lastname, DOB,PersonalInfo,UID);
             databaseRef.child(id).setValue(user);
             Toast.makeText(UserInfoInputActivity.this, "User added", Toast.LENGTH_SHORT).show();
         }
