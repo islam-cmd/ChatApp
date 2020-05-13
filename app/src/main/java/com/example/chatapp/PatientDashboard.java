@@ -59,7 +59,7 @@ public class PatientDashboard extends AppCompatActivity {
         view_profile_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(PatientDashboard.this,LoginActivity.class);
+                Intent intent = new Intent(PatientDashboard.this,UserInfoDisplay.class);
                 startActivity(intent);
                 finish();
             }
