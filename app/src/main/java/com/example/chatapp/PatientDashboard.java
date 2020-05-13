@@ -18,6 +18,7 @@ public class PatientDashboard extends AppCompatActivity {
     Button view_doctors_btn;
     Button view_appointment_btn;
     Button contactSupport_btn;
+    Button view_profile_btn;
 
 
 
@@ -28,6 +29,8 @@ public class PatientDashboard extends AppCompatActivity {
         viewMes_btn = findViewById(R.id.ChatActivity);
         logout_btn = findViewById(R.id.log_out);
         view_doctors_btn = findViewById(R.id.view_doc);
+        view_profile_btn= findViewById(R.id.view_profile);
+
 
         viewMes_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +56,15 @@ public class PatientDashboard extends AppCompatActivity {
                 finish();
             }
         }));
+        view_profile_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PatientDashboard.this,LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
 
     }
 }
