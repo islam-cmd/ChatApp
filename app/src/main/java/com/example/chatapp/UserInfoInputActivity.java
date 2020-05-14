@@ -45,7 +45,7 @@ public class UserInfoInputActivity extends AppCompatActivity implements DatePick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_info_input);
-        databaseRef = FirebaseDatabase.getInstance().getReference("user info");
+        databaseRef = FirebaseDatabase.getInstance().getReference("user_info");
 
 
         mPersonalInfo=(EditText) findViewById(R.id.PersonalInfo);
@@ -88,7 +88,7 @@ public class UserInfoInputActivity extends AppCompatActivity implements DatePick
         if (TextUtils.isEmpty(firstname) || TextUtils.isEmpty(lastname) || TextUtils.isEmpty(DOB)) {
             Toast.makeText(UserInfoInputActivity.this, "All Fields are Required", Toast.LENGTH_SHORT).show();
         } else {
-            final Query query = FirebaseDatabase.getInstance().getReference("user info").orderByChild("UID").equalTo(UID);
+            final Query query = FirebaseDatabase.getInstance().getReference("user_info").orderByChild("uid").equalTo(UID);
             query.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -96,8 +96,8 @@ public class UserInfoInputActivity extends AppCompatActivity implements DatePick
                         for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                             UserInfo user = snapshot.getValue(UserInfo.class);
                             if (user.getUID().equals(UID)) {
-                                String id = user.getId();
-                                updateArtist(id, firstname, lastname, DOB, PersonalInfo, UID);
+                                String id =user.getId();
+                                updateArtist(id, firstname,lastname,DOB,PersonalInfo,UID);
                                 break;
 
 
@@ -130,7 +130,7 @@ public class UserInfoInputActivity extends AppCompatActivity implements DatePick
     private boolean updateArtist(String id, String firstname, String lastname ,String DOB,String personalInfo,String UID){
 
 
-        DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference("users").child(id);
+        DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference("user_info").child(id);
         UserInfo user = new UserInfo(id, firstname,lastname,DOB,personalInfo,UID);
         databaseReference.setValue(user);
         return true;}

@@ -6,17 +6,17 @@ public class UserInfo {
     String lastName;
     String dateOfBirth;
     String personalInfo;
-    String UID;
+    String uid;
     public UserInfo(){
 
     }
-    public UserInfo(String id, String firstName, String lastName,String dateOfBirth,String personalInfo, String UID){
+    public UserInfo(String id, String firstName, String lastName,String dateOfBirth,String personalInfo, String uid){
         this.id= id;
         this.firstName=firstName;
         this.lastName=lastName;
         this.dateOfBirth=dateOfBirth;
         this.personalInfo=personalInfo;
-        this.UID=UID;
+        this.uid=uid;
     }
 
     public String getId()
@@ -31,6 +31,6 @@ public class UserInfo {
     }
     public String getDateOfBirth(){return dateOfBirth;}
     public String getPersonalInfo(){return personalInfo;}
-    public String getUID(){return  UID;}
+    public String getUID(){return  uid;}
 }
 
