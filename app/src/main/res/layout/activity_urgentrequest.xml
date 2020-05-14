@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.chatapp.UrgentActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="30dp"
+        android:layout_height="30dp" />
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:text=""
+        android:textColor="#fff"
+        android:textStyle="bold" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <Spinner
+        android:id="@+id/userSpinner"
+        android:layout_width="411dp"
+        android:layout_height="52dp"
+        android:layout_below="@id/text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="7dp"
+        android:gravity="center_horizontal"
+        android:text="File an Urgent Case"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btn_sendissue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/issue"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Send"
+        android:textColor="#fff" />
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/issue"
+        android:layout_width="match_parent"
+        android:layout_height="181dp"
+        android:layout_below="@id/title"
+        android:layout_marginTop="10dp"
+        android:hint="Write a description of your issue"
+        android:inputType="text"
+        app:met_floatingLabel="normal" />
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/userSpinner"
+        android:layout_marginTop="10dp"
+        android:hint="Title"
+        android:inputType="text"
+        app:met_floatingLabel="normal" />
+
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="128dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_sendissue"
+        android:layout_marginTop="35dp"
+        android:text="Back" />
+
+</RelativeLayout>

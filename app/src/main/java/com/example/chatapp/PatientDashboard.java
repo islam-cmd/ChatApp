@@ -6,8 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import java.nio.file.Path;
-
 
 
 public class PatientDashboard extends AppCompatActivity {
@@ -19,6 +17,8 @@ public class PatientDashboard extends AppCompatActivity {
     Button view_appointment_btn;
     Button contactSupport_btn;
     Button view_profile_btn;
+    Button emergency_btn;
+
 
 
 
@@ -30,6 +30,8 @@ public class PatientDashboard extends AppCompatActivity {
         logout_btn = findViewById(R.id.log_out);
         view_doctors_btn = findViewById(R.id.view_doc);
         view_profile_btn= findViewById(R.id.view_profile);
+
+        emergency_btn = findViewById(R.id.Urgent_Case);
 
 
         viewMes_btn.setOnClickListener(new View.OnClickListener() {
@@ -43,8 +45,16 @@ public class PatientDashboard extends AppCompatActivity {
         schedule.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // Intent intent = new Intent(PatientDashboard.this, RequestConsultationActivity.class);
+               //Intent intent = new Intent(PatientDashboard.this, RequestConsultationActivity.class);
                 //startActivity(intent);
+                finish();
+            }
+        });
+        emergency_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                 Intent intent = new Intent(PatientDashboard.this, UrgentActivity.class);
+                startActivity(intent);
                 finish();
             }
         });
@@ -65,6 +75,15 @@ public class PatientDashboard extends AppCompatActivity {
             }
         });
 
+
+
+        //view_appointment_btn.setOnClickListener((new View.OnClickListener() {
+            //@Override
+          //  public void onClick(View v) {
+              //  Intent intent = new Intent(PatientDashboard.this, Viewing_AppointmentActivity.class);
+                //startActivity(intent);
+                //finish(); }
+        //}));
 
     }
 }
