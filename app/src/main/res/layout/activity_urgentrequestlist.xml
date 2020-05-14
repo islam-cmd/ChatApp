@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.chatapp.DocReceiveUrgentActivity">
+    tools:context="com.example.chatapp.UrgentActivityList">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorDocs"
+        android:background="@color/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme">
 
@@ -38,7 +38,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="7dp"
         android:gravity="center_horizontal"
-        android:text="List of Urgent Cases"
+        android:text="Urgent Cases"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -58,7 +58,15 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/urgentList"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="38dp"
         android:text="Back" />
+
+    <Button
+        android:id="@+id/btn_create"
+        android:layout_width="161dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="235dp"
+        android:layout_marginTop="475dp"
+        android:text="Create New Case" />
 
 </RelativeLayout>

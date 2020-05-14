@@ -55,7 +55,6 @@ public class UrgentActivity extends AppCompatActivity implements AdapterView.OnI
         username = findViewById(R.id.username);
         profile_image = findViewById(R.id.profile_image);
 
-
         final Spinner userSpinner = findViewById(R.id.userSpinner);
         userSpinner.setOnItemSelectedListener(this);
 
@@ -84,7 +83,7 @@ public class UrgentActivity extends AppCompatActivity implements AdapterView.OnI
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(UrgentActivity.this, PatientDashboard.class);
+                Intent intent = new Intent(UrgentActivity.this, UrgentActivityList.class);
                 startActivity(intent);
                 finish();
             }

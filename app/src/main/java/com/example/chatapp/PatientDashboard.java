@@ -49,7 +49,7 @@ public class PatientDashboard extends AppCompatActivity {
         emergency_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                 Intent intent = new Intent(PatientDashboard.this, UrgentActivity.class);
+                 Intent intent = new Intent(PatientDashboard.this, UrgentActivityList.class);
                 startActivity(intent);
                 finish();
             }

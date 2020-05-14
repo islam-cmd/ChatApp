@@ -33,6 +33,8 @@
         <activity android:name=".UrgentActivity"/>
         <activity android:name=".DocReceiveUrgentActivity"/>
         <activity android:name=".DocReadUrgentRequest"/>
+        <activity android:name=".UrgentActivityList"/>
+        <activity android:name=".UrgentActivityView"/>
         <activity android:name=".StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

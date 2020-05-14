@@ -65,7 +65,7 @@ public class DocReadUrgentRequest extends AppCompatActivity {
             public void onClick(View v) {
                 String replytext = reply.getText().toString();
                 if (!replytext.equals("")) {
-                    sendReply(fuser.getUid(), intent.getStringExtra("SenderID"), replytext);
+                    sendReply(fuser.getUid(), intent.getStringExtra("SenderID"), replytext, intent.getStringExtra("IssueID"));
                     deleteIssue(intent.getStringExtra("IssueID"));
                 } else {
                     Toast.makeText(DocReadUrgentRequest.this, "Please fill out all of the text boxes", Toast.LENGTH_SHORT).show();
@@ -106,13 +106,14 @@ public class DocReadUrgentRequest extends AppCompatActivity {
 
     }
 
-    private void sendReply(String sender, String reciever, String replymsg) {
+    private void sendReply(String sender, String reciever, String replymsg, String originalID) {
 
         DatabaseReference refrence = FirebaseDatabase.getInstance().getReference();
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("sender", sender);
         hashMap.put("reciever", reciever);
         hashMap.put("replymsg", replymsg);
+        hashMap.put("originalID", originalID);
         refrence.child("ResolvedIssues").push().setValue(hashMap);
 
     }
@@ -127,9 +128,6 @@ public class DocReadUrgentRequest extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     String issueID = snapshot.getKey();
-                    Log.v("snapshotkey", issueID);
-                    Log.v("inputkey", issueID2);
-                    Log.v("comparison", String.valueOf(issueID.compareTo(issueID2)));
                     if (issueID.compareTo(issueID2) == 0)
                     {
                         HashMap<String, Object> issueUpdates = new HashMap<>();
