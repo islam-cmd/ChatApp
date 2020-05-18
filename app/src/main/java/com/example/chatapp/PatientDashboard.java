@@ -41,8 +41,16 @@ public class PatientDashboard extends AppCompatActivity {
         schedule.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // Intent intent = new Intent(PatientDashboard.this, RequestConsultationActivity.class);
+               //Intent intent = new Intent(PatientDashboard.this, RequestConsultationActivity.class);
                 //startActivity(intent);
+                finish();
+            }
+        });
+        emergency_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                 Intent intent = new Intent(PatientDashboard.this, UrgentActivity.class);
+                startActivity(intent);
                 finish();
             }
         });
@@ -54,5 +62,14 @@ public class PatientDashboard extends AppCompatActivity {
                 finish();
             }
         }));
+
+        //view_appointment_btn.setOnClickListener((new View.OnClickListener() {
+            //@Override
+          //  public void onClick(View v) {
+              //  Intent intent = new Intent(PatientDashboard.this, Viewing_AppointmentActivity.class);
+                //startActivity(intent);
+                //finish(); }
+        //}));
+
     }
 }

@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDark">
 
-       <ImageButton
+        <ImageButton
             android:id="@+id/back_btn"
             android:layout_width="40dp"
             android:layout_height="40dp"
@@ -29,50 +29,51 @@
         android:orientation="vertical"
         android:padding="10dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Request Consultation"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Request Consultation"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Area"
-        android:textSize="15sp"
-        android:textStyle="normal" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Area"
+            android:textSize="15sp"
+            android:textStyle="normal" />
 
-    <Spinner
-        android:id="@+id/areaSpinner"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:popupBackground="@color/colorPrimaryDark"
-        android:spinnerMode="dropdown"
-        android:entries="@array/area_arrays"/>
+        <Spinner
+            android:id="@+id/areaSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:popupBackground="@color/colorPrimaryDark"
+            android:spinnerMode="dropdown"
+            android:entries="@array/area_arrays"/>
 
-     <TextView
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:text="Clinic"
-         android:textSize="15sp"
-         android:textStyle="normal" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Clinic"
+            android:textSize="15sp"
+            android:textStyle="normal" />
 
-   <Spinner
-       android:id="@+id/clinicSpinner"
-       android:layout_width="match_parent"
-       android:layout_height="40dp"
-       android:popupBackground="@color/colorPrimaryDark"
-       android:spinnerMode="dropdown" />
+        <Spinner
+            android:id="@+id/clinicSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:popupBackground="@color/colorPrimaryDark"
+            android:spinnerMode="dropdown"
+            android:entries="@array/clinic_array"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Speciality"
-        android:textSize="15dp"
-        android:textStyle="normal" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Speciality"
+            android:textSize="15dp"
+            android:textStyle="normal" />
 
-    <Spinner
+        <Spinner
             android:id="@+id/specialitySpinner"
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -81,19 +82,33 @@
             android:entries="@array/speciality_arrays"
             android:prompt="@string/speciality_prompt"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Doctor"
-        android:textSize="15dp"
-        android:textStyle="normal" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Doctor"
+            android:textSize="15dp"
+            android:textStyle="normal" />
 
-    <Spinner
-        android:id="@+id/doctorSpinner"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:popupBackground="@color/colorPrimaryDark"
-        android:spinnerMode="dropdown" />
+        <Spinner
+            android:id="@+id/doctorSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:popupBackground="@color/colorPrimaryDark"
+            android:entries="@array/doctor_array"
+            android:spinnerMode="dropdown" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date"
+            android:textSize="15dp"
+            android:textStyle="normal" />
+
+        <EditText
+            android:id="@+id/editDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="date" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -110,23 +125,21 @@
        android:entries="@array/appointment_time"
        android:spinnerMode="dropdown" />
 
-    <Button
-        android:id="@+id/btn_request"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:enabled="false"
-        android:layout_marginTop="10dp"
-        android:background="@color/colorPrimaryDark"
-        android:text="Submit Request"
-        android:textColor="#fff"
-        />
+        <Button
+            android:id="@+id/btn_request"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorPrimaryDark"
+            android:text="Submit Request"
+            android:textColor="#fff"
+            />
 
 
-</LinearLayout>
+
+
+    </LinearLayout>
+
 </RelativeLayout>
-
-
-
-
-
 
