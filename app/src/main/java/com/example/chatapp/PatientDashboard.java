@@ -47,7 +47,7 @@ public class PatientDashboard extends AppCompatActivity {
             public void onClick(View view) {
                //Intent intent = new Intent(PatientDashboard.this, RequestConsultationActivity.class);
                 //startActivity(intent);
-                finish();
+             //   finish();
             }
         });
         emergency_btn.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +71,7 @@ public class PatientDashboard extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(PatientDashboard.this,UserInfoDisplay.class);
                 startActivity(intent);
-                finish();
+
             }
         });
 
