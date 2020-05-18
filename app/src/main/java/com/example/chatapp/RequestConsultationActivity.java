@@ -61,59 +61,25 @@ public class RequestConsultationActivity extends AppCompatActivity {
         if (TextUtils.isEmpty(clinic) || TextUtils.isEmpty(doctor)  || TextUtils.isEmpty(appointmentTime)) {
             Toast.makeText(RequestConsultationActivity.this, "All Fields are Required", Toast.LENGTH_SHORT).show();
         } else {
-            String patientId  =databaseRef.push().getKey();
+            String patientId =databaseRef.push().getKey();
             WriteAppointment(patientId, clinic, doctor, appointmentTime);
 
            // need help to push to the database
         }
 }
 private void WriteAppointment(final String patientId, final String clinic, final String doctor, final String appointmentTime){
-        FirebaseUser user = auth.getCurrentUser();
-        assert user != null;
+
         reference = FirebaseDatabase.getInstance().getReference();
 
-        reference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(!(dataSnapshot.child("Users").child(appointmentTime).exists())){
                     HashMap<String, Object> hashMap = new HashMap<>();
                     hashMap.put("patient ID", patientId);
                     hashMap.put("clinic", clinic);
                     hashMap.put("doctor", doctor);
                     hashMap.put("appointment time",appointmentTime);
+                    hashMap.put("status", 0);
+                    reference.child("BookAppointments").push().setValue(hashMap);
 
-                    reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(RequestConsultationActivity.this, "Your appointment has been requested", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(RequestConsultationActivity.this, PatientDashboard.class);
-                                startActivity(intent);
-                                finish();
-                            }
-                        }
-                    });
-
-
-                } else {
-
-                    Toast.makeText(RequestConsultationActivity.this, "Please try again!", Toast.LENGTH_SHORT).show();
-                }
-
-                }
-
-
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-
-
-
-        };
+        }
 
 
 

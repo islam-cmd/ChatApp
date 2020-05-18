@@ -96,6 +96,19 @@
             android:popupBackground="@color/colorPrimaryDark"
             android:entries="@array/doctor_array"
             android:spinnerMode="dropdown" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date"
+            android:textSize="15dp"
+            android:textStyle="normal" />
+
+        <EditText
+            android:id="@+id/editDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="date" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -122,6 +135,8 @@
             android:text="Submit Request"
             android:textColor="#fff"
             />
+
+
 
 
     </LinearLayout>
