@@ -18,7 +18,7 @@ public class PatientDashboard extends AppCompatActivity {
     Button contactSupport_btn;
     Button view_profile_btn;
     Button emergency_btn;
-
+Button OnlineConsultation;
 
 
 
@@ -32,7 +32,7 @@ public class PatientDashboard extends AppCompatActivity {
         view_profile_btn= findViewById(R.id.view_profile);
 
         emergency_btn = findViewById(R.id.Urgent_Case);
-
+OnlineConsultation = findViewById(R.id.OnlineConsultation);
 
         viewMes_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,7 +76,14 @@ public class PatientDashboard extends AppCompatActivity {
         });
 
 
+OnlineConsultation.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Intent intent = new Intent(PatientDashboard.this, OnlineConsultationActivity.class);
+        startActivity(intent);
 
+    }
+});
         //view_appointment_btn.setOnClickListener((new View.OnClickListener() {
             //@Override
           //  public void onClick(View v) {

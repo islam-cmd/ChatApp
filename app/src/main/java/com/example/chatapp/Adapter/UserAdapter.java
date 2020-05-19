@@ -62,10 +62,10 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         return mUsers.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView username;
-        private ImageView profile_image;
+        public TextView username;
+        public ImageView profile_image;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
