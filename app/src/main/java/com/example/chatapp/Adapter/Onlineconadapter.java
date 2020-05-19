@@ -10,9 +10,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.chatapp.Docopinion;
+import com.example.chatapp.Medhistory;
+import com.example.chatapp.Model.Doctor;
 import com.example.chatapp.Model.OnlineConsultation;
 import com.example.chatapp.OnlineConsultationdoc;
 import com.example.chatapp.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
@@ -51,10 +54,17 @@ public class Onlineconadapter extends RecyclerView.Adapter<Onlineconadapter.View
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, "It works fine", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(context, Docopinion.class);
+                if (!(FirebaseAuth.getInstance().getCurrentUser().getUid().equals(user.getPatientID()))) {
+                    Intent intent = new Intent(context, Docopinion.class);
                     intent.putExtra("userid", user.getPatientID());
                     intent.putExtra("subject", user.getSubject());
-                context.startActivity(intent);
+                    intent.putExtra("uri",user.getURI());
+                    context.startActivity(intent);
+                } else {
+                    Intent intent = new Intent(context, Medhistory.class);
+                    intent.putExtra("subject", user.getSubject());
+                    context.startActivity(intent);
+                }
             }
         });
     }

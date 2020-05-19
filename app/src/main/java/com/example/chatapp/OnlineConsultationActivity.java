@@ -203,14 +203,11 @@ public class OnlineConsultationActivity extends AppCompatActivity {
                 String imageFileName = "JPEG_" + timeStamp + "." + getFileExt(contentUri);
                 Log.d("tag", "onActivityResult: Gallery Image Uri:  " + imageFileName);
                 selectedImage.setImageURI(contentUri);
-
                 uploadImageToFirebase(imageFileName, contentUri);
-
 
             }
 
         }
-
 
     }
 
@@ -223,7 +220,7 @@ public class OnlineConsultationActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Uri uri) {
                         Log.d("tag", "onSuccess: Uploaded Image URl is " + uri.toString());
-                        Log.d("TAG", "onSuccess: download uri is "+ image.getDownloadUrl());
+                        Log.d("TAG", "onSuccess: download uri is " + image.getDownloadUrl());
                         EditText et = findViewById(R.id.description);
                         EditText et2 = findViewById(R.id.subject);
                         uploadconsult(uri.toString(), et.getText().toString(), et2.getText().toString(), FirebaseAuth.getInstance().getCurrentUser().getUid(),
