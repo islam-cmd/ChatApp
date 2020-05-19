@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.chatapp.Request_ConsultationActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:text=""
+            android:textColor="#fff"
+            android:textStyle="bold" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="7dp"
+        android:gravity="center_horizontal"
+        android:text="Request a consultation"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Area"
+        android:textSize="15sp"
+        android:textStyle="normal" />
+
+    <Spinner
+        android:id="@+id/areaSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:popupBackground="@color/colorPrimaryDark"
+        android:spinnerMode="dropdown"
+        android:entries="@array/area_arrays"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clinic"
+        android:textSize="15sp"
+        android:textStyle="normal" />
+
+    <Spinner
+        android:id="@+id/clinicSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:popupBackground="@color/colorPrimaryDark"
+        android:spinnerMode="dropdown"
+        android:entries="@array/clinic_array"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Speciality"
+        android:textSize="15dp"
+        android:textStyle="normal" />
+
+    <Spinner
+        android:id="@+id/specialitySpinner"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:popupBackground="@color/colorPrimaryDark"
+        android:spinnerMode="dropdown"
+        android:entries="@array/speciality_arrays"
+        android:prompt="@string/speciality_prompt"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Doctor"
+        android:textSize="15dp"
+        android:textStyle="normal" />
+
+    <Spinner
+        android:id="@+id/doctorSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:popupBackground="@color/colorPrimaryDark"
+        android:entries="@array/doctor_array"
+        android:spinnerMode="dropdown" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date"
+        android:textSize="15dp"
+        android:textStyle="normal" />
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/editDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="date" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Available Times"
+        android:textSize="15dp"
+        android:textStyle="normal" />
+
+    <Spinner
+        android:id="@+id/appointmentSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:popupBackground="@color/colorPrimaryDark"
+        android:entries="@array/appointment_time"
+        android:spinnerMode="dropdown" />
+
+        <Button
+            android:id="@+id/btn_sendRequest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorPrimaryDark"
+            android:text="Send Request"
+            android:textColor="#fff" />
+
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="128dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_sendRequest"
+            android:layout_marginTop="35dp"
+            android:text="Back" />
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>
