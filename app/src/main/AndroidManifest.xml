@@ -27,15 +27,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".UserInfoDisplay"></activity>
+        <activity android:name=".DocScheduleDisplayActivity" />
         <activity android:name=".Docopinion"></activity>
         <activity android:name=".OnlineConsultationdoc" />
         <activity android:name=".DoctorDashboard" /> <!-- <<<<<<< HEAD -->
-        <activity android:name=".DocScheduleDisplayActivity" />
+<!--        <activity android:name=".DocScheduleDisplayActivity" />-->
         <activity android:name=".DocScheduleInputActivity" />
         <activity android:name=".UserInfoInputActivity" /> <!-- <activity android:name=".DocResetActivity"></activity> -->
-        <!-- <activity android:name=".OnlineConsultationActivity"/> -->
+<!--=======-->
+<!--        <activity android:name=".OnlineConsultationActivity"/>-->
         <activity android:name=".PatientDashboard" /> <!-- <activity android:name=".DocResetActivity"></activity> -->
-        <!-- &gt;>>>>>> 384ea6cccaba79c96e0c53f84a178e1b83dd239b -->
+<!--&gt;>>>>>> 384ea6cccaba79c96e0c53f84a178e1b83dd239b-->
         <!-- <activity android:name=".ResetPasswordActivity"></activity> -->
         <activity android:name=".DocMessageActivity" />
         <activity android:name=".FirstTimeActivity" />
@@ -77,6 +80,9 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+
+
     </application>
 
 </manifest>
+    <!--            android:name="android.support.v4.content.FileProvider"-->
