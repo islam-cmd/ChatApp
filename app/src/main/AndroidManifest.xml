@@ -27,8 +27,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DoctorDashboard"></activity>
-        <!-- <<<<<<< HEAD -->
+        <activity android:name=".Docopinion"></activity>
+        <activity android:name=".OnlineConsultationdoc" />
+        <activity android:name=".DoctorDashboard" /> <!-- <<<<<<< HEAD -->
         <activity android:name=".DocScheduleDisplayActivity" />
         <activity android:name=".DocScheduleInputActivity" />
         <activity android:name=".UserInfoInputActivity" /> <!-- <activity android:name=".DocResetActivity"></activity> -->
@@ -42,7 +43,7 @@
         <activity android:name=".DocMainActivity" />
         <activity android:name=".DocRegActivity" />
         <activity android:name=".MessageActivity" />
-        <activity android:name=".UrgentActivity"/>
+        <activity android:name=".UrgentActivity" />
         <activity android:name=".StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
