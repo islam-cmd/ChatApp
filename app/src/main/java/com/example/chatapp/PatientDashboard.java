@@ -18,9 +18,8 @@ public class PatientDashboard extends AppCompatActivity {
     Button contactSupport_btn;
     Button view_profile_btn;
     Button emergency_btn;
-Button OnlineConsultation;
-
-
+    Button OnlineConsultation;
+    Button history;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,31 +28,32 @@ Button OnlineConsultation;
         viewMes_btn = findViewById(R.id.ChatActivity);
         logout_btn = findViewById(R.id.log_out);
         view_doctors_btn = findViewById(R.id.view_doc);
-        view_profile_btn= findViewById(R.id.view_profile);
+        view_profile_btn = findViewById(R.id.view_profile);
 
         emergency_btn = findViewById(R.id.Urgent_Case);
-OnlineConsultation = findViewById(R.id.OnlineConsultation);
-
+        OnlineConsultation = findViewById(R.id.OnlineConsultation);
+        history = findViewById(R.id.history);
         viewMes_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(PatientDashboard.this, MainActivity.class);
                 startActivity(intent);
-                finish(); }
+                finish();
+            }
         });
         schedule = findViewById(R.id.Schedule_appointment);
         schedule.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               //Intent intent = new Intent(PatientDashboard.this, RequestConsultationActivity.class);
+                //Intent intent = new Intent(PatientDashboard.this, RequestConsultationActivity.class);
                 //startActivity(intent);
-             //   finish();
+                //   finish();
             }
         });
         emergency_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                 Intent intent = new Intent(PatientDashboard.this, UrgentActivity.class);
+                Intent intent = new Intent(PatientDashboard.this, UrgentActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -69,27 +69,35 @@ OnlineConsultation = findViewById(R.id.OnlineConsultation);
         view_profile_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(PatientDashboard.this,UserInfoDisplay.class);
+                Intent intent = new Intent(PatientDashboard.this, UserInfoDisplay.class);
                 startActivity(intent);
 
             }
         });
 
 
-OnlineConsultation.setOnClickListener(new View.OnClickListener() {
+        OnlineConsultation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PatientDashboard.this, OnlineConsultationActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+history.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(PatientDashboard.this, OnlineConsultationActivity.class);
+        Intent intent = new Intent(PatientDashboard.this, viewpreviousconsults.class);
         startActivity(intent);
-
     }
 });
         //view_appointment_btn.setOnClickListener((new View.OnClickListener() {
-            //@Override
-          //  public void onClick(View v) {
-              //  Intent intent = new Intent(PatientDashboard.this, Viewing_AppointmentActivity.class);
-                //startActivity(intent);
-                //finish(); }
+        //@Override
+        //  public void onClick(View v) {
+        //  Intent intent = new Intent(PatientDashboard.this, Viewing_AppointmentActivity.class);
+        //startActivity(intent);
+        //finish(); }
         //}));
 
     }
