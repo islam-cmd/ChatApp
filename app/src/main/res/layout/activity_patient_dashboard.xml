@@ -6,6 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".PatientDashboard">
 
+    <Button
+        android:id="@+id/history"
+        android:layout_width="316dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="53dp"
+        android:layout_marginTop="494dp"
+        android:layout_marginEnd="42dp"
+        android:background="@color/colorAccent"
+        android:text="Medical History" />
+
+    <Button
+        android:id="@+id/OnlineConsultation"
+        android:layout_width="116dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="51dp"
+        android:layout_marginTop="425dp"
+        android:layout_marginEnd="244dp"
+        android:background="@color/colorAccent"
+        android:text="Online Consultation" />
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/bar_layout"
         android:layout_width="match_parent"
@@ -14,7 +40,9 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark" />
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
@@ -34,10 +62,10 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:layout_marginTop="394dp"
+        android:layout_marginTop="350dp"
         android:layout_marginEnd="231dp"
-        android:text="View Messages"
-        android:background="@color/colorAccent"/>
+        android:background="@color/colorAccent"
+        android:text="View Messages" />
 
     <Button
         android:id="@+id/view_profile"
@@ -47,8 +75,8 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="179dp"
         android:layout_marginEnd="238dp"
-        android:text="View Profile"
-        android:background="@color/colorAccent"/>
+        android:background="@color/colorAccent"
+        android:text="View Profile" />
 
     <Button
         android:id="@+id/view_doc"
@@ -58,8 +86,8 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="273dp"
         android:layout_marginEnd="228dp"
-        android:text="View Doctors"
-        android:background="@color/colorAccent"/>
+        android:background="@color/colorAccent"
+        android:text="View Doctors" />
 
     <Button
         android:id="@+id/Schedule_appointment"
@@ -69,8 +97,8 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="273dp"
         android:layout_marginEnd="44dp"
-        android:text="Schedule Appointment"
-        android:background="@color/colorAccent"/>
+        android:background="@color/colorAccent"
+        android:text="Schedule Appointment" />
 
     <Button
         android:id="@+id/view_appointment"
@@ -80,8 +108,8 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="181dp"
         android:layout_marginEnd="30dp"
-        android:text="View Appointments"
-        android:background="@color/colorAccent"/>
+        android:background="@color/colorAccent"
+        android:text="View Appointments" />
 
     <Button
         android:id="@+id/contact_support"
@@ -90,10 +118,10 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:layout_marginTop="394dp"
-        android:layout_marginEnd="33dp"
-        android:text="Contact Support"
-        android:background="@color/colorAccent"/>
+        android:layout_marginTop="350dp"
+        android:layout_marginEnd="41dp"
+        android:background="@color/colorAccent"
+        android:text="Contact Support" />
 
     <Button
         android:id="@+id/log_out"
@@ -104,9 +132,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="147dp"
         android:layout_marginTop="582dp"
-        android:text="Log Out"
-        android:background="@color/colorAccent"/>
-    
+        android:background="@color/colorAccent"
+        android:text="Log Out" />
+
     <Button
         android:id="@+id/Urgent_Case"
         android:layout_width="116dp"
@@ -114,8 +142,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="145dp"
-        android:layout_marginTop="468dp"
+        android:layout_marginStart="245dp"
+        android:layout_marginTop="420dp"
         android:background="@color/colorAccent"
         android:text="Urgent Case" />
 
