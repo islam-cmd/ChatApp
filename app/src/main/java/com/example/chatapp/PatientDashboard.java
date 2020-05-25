@@ -18,7 +18,7 @@ public class PatientDashboard extends AppCompatActivity {
     Button contactSupport_btn;
     Button view_profile_btn;
     Button emergency_btn;
-Button OnlineConsultation;
+    Button OnlineConsultation;
 
 
 
