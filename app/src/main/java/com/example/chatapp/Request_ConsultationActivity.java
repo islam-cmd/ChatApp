@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,6 +43,7 @@ public class Request_ConsultationActivity extends AppCompatActivity implements A
     //Spinner areaSpinner, clinicSpinner, specialitySpinner, doctorSpinner, appointmentSpinner;
     FirebaseUser fuser;
     String doctorid;
+    EditText editDate;
     DatabaseReference currentUser;
     public static String toReturn;
 
@@ -54,7 +56,7 @@ public class Request_ConsultationActivity extends AppCompatActivity implements A
         back_btn = findViewById(R.id.btn_back);
         username = findViewById(R.id.username);
         profile_image = findViewById(R.id.profile_image);
-
+        editDate = (EditText) findViewById(R.id.editDate);
 
         final Spinner areaSpinner = findViewById(R.id.areaSpinner);
         areaSpinner.setOnItemSelectedListener(this);
@@ -82,12 +84,17 @@ public class Request_ConsultationActivity extends AppCompatActivity implements A
                 String clinic = clinicSpinner.getSelectedItem().toString();
                 String doctor = doctorSpinner.getSelectedItem().toString();
                 String appointmentTime = appointmentSpinner.getSelectedItem().toString();
-                doctorid = runEventListener(doctor);
+                String date = editDate.getText().toString();
+                String doctorid = "81DpTfchqhgAJQj8waKwT1uSudC2";
+                //doctorid = runEventListener(doctor);
                 if (TextUtils.isEmpty(clinic) || TextUtils.isEmpty(doctor)  || TextUtils.isEmpty(appointmentTime)){
                     Toast.makeText(Request_ConsultationActivity.this, "Please fill out all of the text boxes", Toast.LENGTH_SHORT).show();
                 } else {
                     String patientId =currentUser.push().getKey();
-                    writeAppointment(patientId, clinic, doctorid, appointmentTime);
+                    writeAppointment(patientId, clinic, doctorid, date, appointmentTime);
+                    Intent intent = new Intent(Request_ConsultationActivity.this, PatientDashboard.class);
+                    startActivity(intent);
+                    finish();
                 }
             }
         });
@@ -134,13 +141,14 @@ public class Request_ConsultationActivity extends AppCompatActivity implements A
     public void onNothingSelected(AdapterView<?> adapterView) {
     }
 
-    private void writeAppointment(final String patientId, final String clinic, final String doctorid, final String appointmentTime) {
+    private void writeAppointment(final String patientId, final String clinic, final String doctorid, final String date, final String appointmentTime) {
 
         DatabaseReference refrence = FirebaseDatabase.getInstance().getReference();
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("patientId", patientId);
         hashMap.put("clinic", clinic);
         hashMap.put("doctorId", doctorid);
+        hashMap.put("date", date);
         hashMap.put("appointmentTime", appointmentTime);
         hashMap.put("status", 0);
         refrence.child("RequestConsultation").push().setValue(hashMap);

@@ -9,7 +9,21 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark">
+        android:background="@color/colorDocs">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:text=""
+            android:textColor="#fff"
+            android:textStyle="bold" />
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -75,10 +89,10 @@
             <TableRow>
                 <TextView
                     android:layout_column='1'
-                    android:text="Annabel Cowley"
+                    android:text="Islam Toukhy"
                     android:padding="3dip" />
                 <TextView
-                    android:text="04-05-2020 "
+                    android:text="23-06-2020 "
                     android:layout_gravity="right"
                     android:padding="3dip" />
                 <TextView
@@ -119,7 +133,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="46dp"
         android:layout_marginTop="223dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/colorDocs"
         android:text="Confirm Request"
         android:textColor="#fff"/>
 
@@ -131,7 +145,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="223dp"
         android:layout_marginEnd="62dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/colorDocs"
         android:text="Deny Request"
         android:textColor="#fff"/>
 

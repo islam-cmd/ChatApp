@@ -40,7 +40,16 @@ public class DocAcceptRequestActivity extends AppCompatActivity {
         btn_denyRequest = findViewById(R.id.btn_denyRequest);
         btn_acceptRequest = findViewById(R.id.btn_acceptRequest);
 
-        btn_acceptRequest.setOnClickListener(new View.OnClickListener() {
+        btn_denyRequest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DocAcceptRequestActivity.this, DocScheduleDisplayActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        btn_denyRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DocAcceptRequestActivity.this, DocScheduleDisplayActivity.class);
@@ -52,7 +61,8 @@ public class DocAcceptRequestActivity extends AppCompatActivity {
     }
 
 
-    private void readMessage(final String myid, final String userid, final String imageurl) {
+
+    private void viewAppoinments() {
 
         mappointment = new ArrayList<>();
         reference = FirebaseDatabase.getInstance().getReference("BookAppointments");
@@ -62,7 +72,7 @@ public class DocAcceptRequestActivity extends AppCompatActivity {
                 mappointment.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Appointment appointment = snapshot.getValue(Appointment.class);
-                    if (appointment.getDoctor().equals("Annabel")) {
+                    if (appointment.getDoctor().equals("Annabel") && appointment.getStatus() == 0) {
                         mappointment.add(appointment);
                     }
                     appointmentAdapter = new AppointmentAdapter (DocAcceptRequestActivity.this, mappointment);

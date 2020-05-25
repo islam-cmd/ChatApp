@@ -35,14 +35,14 @@ Button OnlineConsultation;
                 finish(); }
         });
         schedule = findViewById(R.id.Schedule_appointment);
-        //schedule.setOnClickListener(new View.OnClickListener() {
-          //  @Override
-            //public void onClick(View view) {
-                // Intent intent = new Intent(PatientDashboard.this, RequestConsultationActivity.class);
+        schedule.setOnClickListener(new View.OnClickListener() {
+           @Override
+            public void onClick(View view) {
+                 //Intent intent = new Intent(DoctorDashboard.this, Doc_Accept_Request_Activity.class);
                 //startActivity(intent);
-//                finish();
-            //}
-       // });
+            finish();
+            }
+        });
         logout_btn.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View view) {
