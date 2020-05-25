@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DoctorDashboard">
+
+    <Button
+        android:id="@+id/OnlineConsultation"
+        android:layout_width="135dp"
+        android:layout_height="61dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="47dp"
+        android:layout_marginTop="522dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Online Consultation" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark">
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <ImageButton
+        android:id="@+id/dochome_btn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="3dp"
+        android:src="@drawable/doc" />
+
+    <ImageButton
+        android:id="@+id/docside_bar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="355dp"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="0dp"
+        android:src="@drawable/doc" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="101dp"
+        android:text="Dashboard"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="122dp"
+        tools:layout_editor_absoluteY="76dp" />
+
+    <Button
+        android:id="@+id/docprofile"
+        android:layout_width="123dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="223dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="View Profile" />
+
+    <Button
+        android:id="@+id/btn_viewpatients"
+        android:layout_width="123dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="223dp"
+        android:layout_marginEnd="62dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="View Patients" />
+
+    <Button
+        android:id="@+id/prescription"
+        android:layout_width="135dp"
+        android:layout_height="61dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="342dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Create a Prescription" />
+
+    <Button
+        android:id="@+id/view"
+        android:layout_width="135dp"
+        android:layout_height="61dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="426dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="View Messages" />
+
+    <Button
+        android:id="@+id/ContactSupport"
+        android:layout_width="135dp"
+        android:layout_height="61dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="224dp"
+        android:layout_marginTop="423dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Contact Support" />
+
+    <Button
+        android:id="@+id/location"
+        android:layout_width="135dp"
+        android:layout_height="61dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="223dp"
+        android:layout_marginTop="340dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Update Current Location" />
+
+    <Button
+        android:id="@+id/log_out"
+        android:layout_width="135dp"
+        android:layout_height="61dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="138dp"
+        android:layout_marginTop="618dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Log out" />
+
+</RelativeLayout>

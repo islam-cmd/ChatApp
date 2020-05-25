@@ -14,6 +14,23 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
+    <uses-feature
+        android:name="android.hardware.microphone"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -44,6 +61,20 @@
             android:name=".GpsActivity"
             android:exported="true"
             android:label="@string/title_activity_gps" /> <!-- <activity android:name=".DocResetActivity"></activity> -->
+        <activity android:name=".Medhistory"></activity>
+        <activity android:name=".viewpreviousconsults" />
+        <activity android:name=".UserInfoDisplay" />
+        <activity android:name=".DocScheduleDisplayActivity" />
+        <activity android:name=".Docopinion" />
+        <activity android:name=".OnlineConsultationdoc" />
+        <activity android:name=".DoctorDashboard" /> <!-- <<<<<<< HEAD -->
+        <!-- <activity android:name=".DocScheduleDisplayActivity" /> -->
+        <activity android:name=".DocScheduleInputActivity" />
+        <activity android:name=".UserInfoInputActivity" /> <!-- <activity android:name=".DocResetActivity"></activity> -->
+        <!-- ======= -->
+        <!-- <activity android:name=".OnlineConsultationActivity"/> -->
+        <activity android:name=".PatientDashboard" /> <!-- <activity android:name=".DocResetActivity"></activity> -->
+        <!-- &gt;>>>>>> 384ea6cccaba79c96e0c53f84a178e1b83dd239b -->
         <!-- <activity android:name=".ResetPasswordActivity"></activity> -->
         <activity android:name=".DocMessageActivity" />
         <activity android:name=".FirstTimeActivity" />
@@ -51,6 +82,11 @@
         <activity android:name=".DocMainActivity" />
         <activity android:name=".DocRegActivity" />
         <activity android:name=".MessageActivity" />
+        <activity android:name=".UrgentActivity"/>
+        <activity android:name=".DocReceiveUrgentActivity"/>
+        <activity android:name=".DocReadUrgentRequest"/>
+        <activity android:name=".UrgentActivityList"/>
+        <activity android:name=".UrgentActivityView"/>
         <activity android:name=".StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -84,6 +120,9 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+
+
     </application>
 
 </manifest>
+    <!--            android:name="android.support.v4.content.FileProvider"-->

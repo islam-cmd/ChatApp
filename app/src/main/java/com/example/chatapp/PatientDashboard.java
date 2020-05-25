@@ -17,6 +17,9 @@ public class PatientDashboard extends AppCompatActivity {
     Button view_doctors_btn;
     Button view_appointment_btn;
     Button contactSupport_btn;
+    Button emergency_btn;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,9 @@ public class PatientDashboard extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        view_doctors_btn = findViewById(R.id.view_doc);
+        emergency_btn = findViewById(R.id.Urgent_Case);
+
 
         viewMes_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +54,14 @@ public class PatientDashboard extends AppCompatActivity {
             public void onClick(View view) {
                // Intent intent = new Intent(PatientDashboard.this, RequestConsultationActivity.class);
                 //startActivity(intent);
+                finish();
+            }
+        });
+        emergency_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                 Intent intent = new Intent(PatientDashboard.this, UrgentActivityList.class);
+                startActivity(intent);
                 finish();
             }
         });
