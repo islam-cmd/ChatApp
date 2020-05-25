@@ -8,12 +8,12 @@
 
     <Button
         android:id="@+id/OnlineConsultation"
-        android:layout_width="135dp"
-        android:layout_height="61dp"
+        android:layout_width="123dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="47dp"
-        android:layout_marginTop="522dp"
+        android:layout_marginStart="144dp"
+        android:layout_marginTop="482dp"
         android:background="@color/colorPrimaryDark"
         android:text="Online Consultation" />
 
@@ -54,8 +54,8 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="108dp"
-        android:layout_marginTop="101dp"
-        android:text="Dashboard"
+        android:layout_marginTop="68dp"
+        android:text="Doctor Dashboard"
         android:textSize="40dp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="122dp"
@@ -67,8 +67,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="46dp"
-        android:layout_marginTop="223dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="201dp"
         android:background="@color/colorPrimaryDark"
         android:text="View Profile" />
 
@@ -78,66 +78,65 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="223dp"
-        android:layout_marginEnd="62dp"
+        android:layout_marginTop="201dp"
+        android:layout_marginEnd="65dp"
         android:background="@color/colorPrimaryDark"
         android:text="View Patients" />
 
     <Button
         android:id="@+id/prescription"
-        android:layout_width="135dp"
-        android:layout_height="61dp"
-        android:layout_alignParentStart="true"
+        android:layout_width="123dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="42dp"
-        android:layout_marginTop="342dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="298dp"
+        android:layout_marginEnd="244dp"
         android:background="@color/colorPrimaryDark"
         android:text="Create a Prescription" />
 
     <Button
         android:id="@+id/view"
-        android:layout_width="135dp"
-        android:layout_height="61dp"
+        android:layout_width="123dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="42dp"
-        android:layout_marginTop="426dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="395dp"
+        android:layout_marginEnd="65dp"
         android:background="@color/colorPrimaryDark"
         android:text="View Messages" />
 
     <Button
         android:id="@+id/ContactSupport"
-        android:layout_width="135dp"
-        android:layout_height="61dp"
-        android:layout_alignParentStart="true"
+        android:layout_width="123dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="224dp"
-        android:layout_marginTop="423dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="394dp"
+        android:layout_marginEnd="64dp"
         android:background="@color/colorPrimaryDark"
         android:text="Contact Support" />
 
     <Button
         android:id="@+id/location"
-        android:layout_width="135dp"
-        android:layout_height="61dp"
-        android:layout_alignParentStart="true"
+        android:layout_width="123dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="223dp"
-        android:layout_marginTop="340dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="297dp"
+        android:layout_marginEnd="64dp"
         android:background="@color/colorPrimaryDark"
         android:text="Update Current Location" />
 
     <Button
         android:id="@+id/log_out"
-        android:layout_width="135dp"
-        android:layout_height="61dp"
+        android:layout_width="123dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
-        android:layout_marginStart="138dp"
-        android:layout_marginTop="618dp"
+        android:layout_marginStart="145dp"
+        android:layout_marginTop="573dp"
         android:background="@color/colorPrimaryDark"
         android:text="Log out" />
 

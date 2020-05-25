@@ -19,19 +19,6 @@
         android:background="@color/colorAccent"
         android:text="Medical History" />
 
-    <Button
-        android:id="@+id/OnlineConsultation"
-        android:layout_width="116dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="51dp"
-        android:layout_marginTop="425dp"
-        android:layout_marginEnd="244dp"
-        android:background="@color/colorAccent"
-        android:text="Online Consultation" />
-
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/bar_layout"
         android:layout_width="match_parent"
@@ -57,75 +44,75 @@
 
     <Button
         android:id="@+id/ChatActivity"
-        android:layout_width="137dp"
+        android:layout_width="126dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:layout_marginTop="350dp"
-        android:layout_marginEnd="231dp"
+        android:layout_marginTop="136dp"
+        android:layout_marginEnd="225dp"
         android:background="@color/colorAccent"
         android:text="View Messages" />
 
     <Button
         android:id="@+id/view_profile"
-        android:layout_width="127dp"
+        android:layout_width="126dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="179dp"
-        android:layout_marginEnd="238dp"
+        android:layout_marginTop="314dp"
+        android:layout_marginEnd="226dp"
         android:background="@color/colorAccent"
         android:text="View Profile" />
 
     <Button
         android:id="@+id/view_doc"
-        android:layout_width="135dp"
+        android:layout_width="126dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="273dp"
-        android:layout_marginEnd="228dp"
+        android:layout_marginTop="228dp"
+        android:layout_marginEnd="224dp"
         android:background="@color/colorAccent"
         android:text="View Doctors" />
 
     <Button
         android:id="@+id/Schedule_appointment"
-        android:layout_width="131dp"
+        android:layout_width="126dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="273dp"
-        android:layout_marginEnd="44dp"
+        android:layout_marginTop="228dp"
+        android:layout_marginEnd="50dp"
         android:background="@color/colorAccent"
         android:text="Schedule Appointment" />
 
     <Button
         android:id="@+id/view_appointment"
-        android:layout_width="147dp"
+        android:layout_width="126dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="181dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginTop="136dp"
+        android:layout_marginEnd="47dp"
         android:background="@color/colorAccent"
         android:text="View Appointments" />
 
     <Button
         android:id="@+id/contact_support"
-        android:layout_width="wrap_content"
+        android:layout_width="126dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:layout_marginTop="350dp"
-        android:layout_marginEnd="41dp"
+        android:layout_marginTop="314dp"
+        android:layout_marginEnd="46dp"
         android:background="@color/colorAccent"
         android:text="Contact Support" />
 
     <Button
         android:id="@+id/log_out"
-        android:layout_width="116dp"
+        android:layout_width="127dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
@@ -137,16 +124,28 @@
 
     <Button
         android:id="@+id/Urgent_Case"
-        android:layout_width="116dp"
+        android:layout_width="126dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="245dp"
-        android:layout_marginTop="420dp"
+        android:layout_marginStart="240dp"
+        android:layout_marginTop="400dp"
+        android:layout_marginEnd="47dp"
         android:background="@color/colorAccent"
         android:text="Urgent Case" />
 
+    <Button
+        android:id="@+id/OnlineConsultation"
+        android:layout_width="126dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="400dp"
+        android:layout_marginEnd="226dp"
+        android:background="@color/colorAccent"
+        android:text="Online Consultation" />
 
 
 </RelativeLayout>
