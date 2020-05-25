@@ -3,6 +3,7 @@ package com.example.chatapp.Adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.ViewHolder> {
     private Context mContext;
     private List<Doctor> mUsers;
+    private static final String TAG = "DoctorAdapter";
 
     public DoctorAdapter(Context mContext, List<Doctor> mUsers) {
         this.mUsers = mUsers;
@@ -48,6 +50,7 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.ViewHolder
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG, "doctor clicked with user id" + doctor.getId());
                 Intent intent = new Intent(mContext, DocMessageActivity.class);
                 intent.putExtra("userid", doctor.getId());
 //                intent.putExtra(" userto", doctor.getUsername());

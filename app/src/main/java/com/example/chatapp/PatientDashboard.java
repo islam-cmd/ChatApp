@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import java.nio.file.Path;
 
 
 public class PatientDashboard extends AppCompatActivity {
@@ -16,7 +17,7 @@ public class PatientDashboard extends AppCompatActivity {
     Button view_doctors_btn;
     Button view_appointment_btn;
     Button contactSupport_btn;
-    Button emergency_btn; 
+    Button emergency_btn;
 
 
 
@@ -26,9 +27,19 @@ public class PatientDashboard extends AppCompatActivity {
         setContentView(R.layout.activity_patient_dashboard);
         viewMes_btn = findViewById(R.id.ChatActivity);
         logout_btn = findViewById(R.id.log_out);
+        view_doctors_btn = (Button) findViewById(R.id.view_doc);
+        schedule = findViewById(R.id.Schedule_appointment);
+
+        view_doctors_btn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PatientDashboard.this, ViewDoctors.class);
+                startActivity(intent);
+            }
+        });
         view_doctors_btn = findViewById(R.id.view_doc);
         emergency_btn = findViewById(R.id.Urgent_Case);
-        
+
 
         viewMes_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,7 +48,7 @@ public class PatientDashboard extends AppCompatActivity {
                 startActivity(intent);
                 finish(); }
         });
-        schedule = findViewById(R.id.Schedule_appointment);
+
         schedule.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

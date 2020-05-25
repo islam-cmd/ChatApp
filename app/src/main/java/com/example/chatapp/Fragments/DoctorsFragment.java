@@ -55,10 +55,27 @@ public class DoctorsFragment extends Fragment {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Doctor user = snapshot.getValue(Doctor.class);
                     mUsers.add(user);
+
                 }
                 doctorAdapter = new DoctorAdapter(getContext(), mUsers);
-                recyclerView.setAdapter(doctorAdapter);
+                refrence.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        mUsers.clear();
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            Doctor user = snapshot.getValue(Doctor.class);
+                            mUsers.add(user);
+                        }
+                        doctorAdapter = new DoctorAdapter(getContext(), mUsers);
+                        recyclerView.setAdapter(doctorAdapter);
 
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
             }
 
             @Override
