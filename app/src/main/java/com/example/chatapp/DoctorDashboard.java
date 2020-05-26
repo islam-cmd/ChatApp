@@ -44,14 +44,14 @@ public class DoctorDashboard extends AppCompatActivity {
 //                finish();
             //}
        // });
-        logout_btn.setOnClickListener((new View.OnClickListener() {
+        logout_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(DoctorDashboard.this, DocLoginActivity.class);
                 startActivity(intent);
                 finish();
             }
-        }));
+        });
         view_appointment_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,5 +60,6 @@ public class DoctorDashboard extends AppCompatActivity {
             }
         });
 
-    }
+
 }
+    }

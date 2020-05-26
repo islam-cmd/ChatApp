@@ -53,7 +53,7 @@ public class DocProfile extends AppCompatActivity {
         DataRef= FirebaseDatabase.getInstance().getReference("DoctorSchedule");
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        refrence = FirebaseDatabase.getInstance().getReference("Doctor").child(firebaseUser.getUid());
+        refrence = FirebaseDatabase.getInstance().getReference("Doctors").child(firebaseUser.getUid());
         mInput.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
