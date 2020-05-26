@@ -83,4 +83,6 @@
         <item>4 PM - 4:30 PM </item>
         <item>4:30 PM - 5 PM </item>
     </string-array>
+    <string name="title_activity_gps">Map</string>
+    <string name="title_activity_doctor_location">Map</string>
 </resources>
