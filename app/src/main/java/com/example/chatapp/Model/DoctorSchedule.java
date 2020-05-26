@@ -6,16 +6,18 @@ public class DoctorSchedule {
     String lastName;
     String startTime;
     String endTime;
+    String uid;
 
     public DoctorSchedule(){
 
-    }
-    public DoctorSchedule(String id, String firstName, String lastName, String startTime,String endTime){
+}
+    public DoctorSchedule(String id, String firstName, String lastName, String startTime,String endTime,String uid){
         this.id= id;
         this.firstName=firstName;
         this.lastName=lastName;
         this.startTime=startTime;
         this.endTime=endTime;
+        this.uid= uid;
     }
 
     public String getId()
@@ -34,4 +36,5 @@ public class DoctorSchedule {
     public String getEndTime(){
         return endTime;
     }
+    public String getUID(){return uid;}
 }
