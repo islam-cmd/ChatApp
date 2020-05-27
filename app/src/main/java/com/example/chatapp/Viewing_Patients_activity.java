@@ -50,7 +50,7 @@ public class Viewing_Patients_activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_patients);
+        setContentView(R.layout.activity_view_pat_history);
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
         viewpat = findViewById(R.id.pat_view);
@@ -83,7 +83,7 @@ public class Viewing_Patients_activity extends AppCompatActivity {
         dashboard_backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Viewing_Patients_activity.this, Doctor_dashboard.class);
+                Intent intent = new Intent(Viewing_Patients_activity.this, DoctorDashboard.class);
                 startActivity(intent);
                 finish();
             }
@@ -92,7 +92,7 @@ public class Viewing_Patients_activity extends AppCompatActivity {
         viewPatHistoryBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Viewing_Patients_activity.this, ViewPatHistory.class);
+                Intent intent = new Intent(Viewing_Patients_activity.this, View.class);
                 startActivity(intent);
                 finish();
 

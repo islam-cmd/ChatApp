@@ -6,6 +6,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -17,7 +18,7 @@ import com.example.chatapp.Fragments.UsersFragment;
 import com.example.chatapp.Model.Appointment;
 import com.example.chatapp.Model.Doctor;
 import com.example.chatapp.Model.User;
-import com.example.chatapp.Model.ViewAppoinmentList;
+import com.example.chatapp.Model.ViewAppointmentList;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -30,7 +31,8 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Viewing_AppointmentActivity extends AppCompatActivity {
+
+public class ViewingAppointmentActivity extends AppCompatActivity {
 
     Button returnbtn;
     Button cancelbtn;
@@ -49,7 +51,7 @@ public class Viewing_AppointmentActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_appointments);
+        setContentView(R.layout.activity_viewing_appointment);
         returnbtn = findViewById(R.id.dashboard);
         username = findViewById(R.id.username);
         viewapp = findViewById(R.id.view_appointment);
@@ -61,19 +63,19 @@ public class Viewing_AppointmentActivity extends AppCompatActivity {
         returnbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Viewing_AppointmentActivity.this, PatientDashboard.class);
+                Intent intent = new Intent(ViewingAppointmentActivity.this, PatientDashboard.class);
                 startActivity(intent);
                 finish();
             }
-            });
+        });
 
         //schedulebtn.setOnClickListener(new View.OnClickListener() {
-            //@Override
-            //public void onClick(View view) {
-          //      Intent intent = new Intent(Viewing_AppointmentActivity.this, RequstConsultationActivity.java);
-            //    startActivity(intent);
-              //  finish();
-            //}
+        //@Override
+        //public void onClick(View view) {
+        //      Intent intent = new Intent(Viewing_AppointmentActivity.this, RequstConsultationActivity.java);
+        //    startActivity(intent);
+        //  finish();
+        //}
         //});
 
         databaseRef.addValueEventListener(new ValueEventListener() {
@@ -86,7 +88,7 @@ public class Viewing_AppointmentActivity extends AppCompatActivity {
                     Appointment appointment = dataSnapshot1.getValue(Appointment.class);
                     viewappList.add(appointment);
                 }
-                ViewAppoinmentList adapter = new ViewAppoinmentList(Viewing_AppointmentActivity.this, viewappList);
+                ViewAppointmentList adapter = new ViewAppointmentList(ViewingAppointmentActivity.this, viewappList);
                 viewapp.setAdapter(adapter);
             }
             @Override
@@ -94,6 +96,24 @@ public class Viewing_AppointmentActivity extends AppCompatActivity {
             }
         });
 
+        cancelbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                databaseRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for (DataSnapshot dataSnapshot1: dataSnapshot.getChildren()) {
+                            dataSnapshot1.getRef().removeValue();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+            }
+        });
 
     }
 }
