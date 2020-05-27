@@ -40,7 +40,7 @@ public class UserInfoDisplay extends AppCompatActivity {
     FirebaseUser firebaseUser;
     DatabaseReference refrence;
 
-
+    boolean check;
     DatabaseReference DataRef;
     String UID;
 
@@ -62,6 +62,7 @@ public class UserInfoDisplay extends AppCompatActivity {
         mLName=(TextView)findViewById(R.id.lastname2);
         mDate=(TextView)findViewById(R.id.date);
         mPInfo=(TextView)findViewById(R.id.pInfo);
+
 
         UID= FirebaseAuth.getInstance().getCurrentUser().getUid();
         DataRef=FirebaseDatabase.getInstance().getReference("user_info");
@@ -104,22 +105,25 @@ public class UserInfoDisplay extends AppCompatActivity {
                 if (dataSnapshot.getChildrenCount() > 0) {
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         UserInfo user = snapshot.getValue(UserInfo.class);
-                        if (user.getUID().equals(UID)) {
-                            String first=user.getFirstName();
-                            String last= user.getLastName();
-                            String DOB= user.getDateOfBirth();
-                            String personalInfo = user.getPersonalInfo();
-                            mFirstName.setText(first);
-                            mLastName.setText(last);
-                            mDOB.setText(DOB);
-                            mPersonalInFo.setText(personalInfo);
-                            break;
+
+                            if (user.getUID().equals(UID)) {
+                                String first = user.getFirstName();
+                                String last = user.getLastName();
+                                String DOB = user.getDateOfBirth();
+                                String personalInfo = user.getPersonalInfo();
+                                mFirstName.setText(first);
+                                mLastName.setText(last);
+                                mDOB.setText(DOB);
+                                mPersonalInFo.setText(personalInfo);
+
+                                break;
+
+
+                            }
 
 
                         }
 
-
-                    }
 
 
                 }

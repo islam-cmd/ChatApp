@@ -14,12 +14,12 @@ import com.example.chatapp.R;
 
 import java.util.List;
 
-public class DoctorScheduleList extends ArrayAdapter<DoctorSchedule> {
+public class DoctorScheduleList extends ArrayAdapter<DoctorProfile> {
     private Activity context;
-    private List<DoctorSchedule> doctorList;
+    private List<DoctorProfile> doctorList;
 
 
-    public DoctorScheduleList(Activity context, List<DoctorSchedule> doctorList){
+    public DoctorScheduleList(Activity context, List<DoctorProfile> doctorList){
         super(context, R.layout.doc_list, doctorList);
         this.context =context;
         this.doctorList=doctorList;
@@ -35,7 +35,7 @@ public class DoctorScheduleList extends ArrayAdapter<DoctorSchedule> {
         View listViewItem = inflater.inflate(R.layout.doc_list, null,true);
         TextView name =(TextView) listViewItem.findViewById(R.id.docListName);
         TextView time = (TextView) listViewItem.findViewById(R.id.docListTime);
-        DoctorSchedule doctor = doctorList.get(position);
+        DoctorProfile doctor = doctorList.get(position);
         name.setText(doctor.getFirstName() +" "+ doctor.getLastName());
         time.setText(doctor.getStartTime()+"-"+doctor.getEndTime());
       return listViewItem;
