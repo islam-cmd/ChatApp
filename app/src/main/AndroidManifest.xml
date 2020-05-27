@@ -38,7 +38,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ViewDoctorInfoActivity"></activity>
+        <activity android:name=".DocProfile"></activity>
+        <activity android:name=".ViewDoctorInfoActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -61,7 +62,7 @@
             android:name=".GpsActivity"
             android:exported="true"
             android:label="@string/title_activity_gps" /> <!-- <activity android:name=".DocResetActivity"></activity> -->
-        <activity android:name=".Medhistory"></activity>
+        <activity android:name=".Medhistory" />
         <activity android:name=".viewpreviousconsults" />
         <activity android:name=".UserInfoDisplay" />
         <activity android:name=".DocScheduleDisplayActivity" />
@@ -81,13 +82,12 @@
         <activity android:name=".DocMainActivity" />
         <activity android:name=".DocRegActivity" />
         <activity android:name=".MessageActivity" />
-        <activity android:name=".UrgentActivity"/>
-        <activity android:name=".DocReceiveUrgentActivity"/>
-        <activity android:name=".DocReadUrgentRequest"/>
-        <activity android:name=".UrgentActivityList"/>
-        <activity android:name=".UrgentActivityView"/>
-        <!-- <activity android:name=".Doc_Accept_Request_Activity"/> -->
-        <activity android:name=".Request_ConsultationActivity"/>
+        <activity android:name=".UrgentActivity" />
+        <activity android:name=".DocReceiveUrgentActivity" />
+        <activity android:name=".DocReadUrgentRequest" />
+        <activity android:name=".UrgentActivityList" />
+        <activity android:name=".UrgentActivityView" /> <!-- <activity android:name=".Doc_Accept_Request_Activity"/> -->
+        <activity android:name=".Request_ConsultationActivity" />
         <activity android:name=".StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -121,9 +121,6 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
-
-
     </application>
 
 </manifest>
-    <!--            android:name="android.support.v4.content.FileProvider"-->
