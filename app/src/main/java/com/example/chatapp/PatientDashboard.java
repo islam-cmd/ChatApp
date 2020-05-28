@@ -30,37 +30,30 @@ public class PatientDashboard extends AppCompatActivity {
         emergency_btn = findViewById(R.id.Urgent_Case);
         
 
-        viewMes_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(PatientDashboard.this, MainActivity.class);
-                startActivity(intent);
-                finish(); }
-        });
+        viewMes_btn.setOnClickListener(v -> {
+            Intent intent = new Intent(PatientDashboard.this, MainActivity.class);
+            startActivity(intent);
+            finish(); });
+
+
+
+
+
         schedule = findViewById(R.id.Schedule_appointment);
-        schedule.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               // Intent intent = new Intent(PatientDashboard.this, RequestConsultationActivity.class);
-                //startActivity(intent);
-                finish();
-            }
+        schedule.setOnClickListener(view -> {
+           // Intent intent = new Intent(PatientDashboard.this, RequestConsultationActivity.class);
+            //startActivity(intent);
+            finish();
         });
-        emergency_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                 Intent intent = new Intent(PatientDashboard.this, UrgentActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        emergency_btn.setOnClickListener(view -> {
+             Intent intent = new Intent(PatientDashboard.this, UrgentActivity.class);
+            startActivity(intent);
+            finish();
         });
-        logout_btn.setOnClickListener((new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(PatientDashboard.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        logout_btn.setOnClickListener((view -> {
+            Intent intent = new Intent(PatientDashboard.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
         }));
     }
 }

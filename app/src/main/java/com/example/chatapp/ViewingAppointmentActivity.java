@@ -1,35 +1,35 @@
 package com.example.chatapp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
+        import androidx.annotation.NonNull;
+        import androidx.appcompat.app.AppCompatActivity;
+        import androidx.viewpager.widget.ViewPager;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.TableRow;
-import android.widget.TextView;
+        import android.content.Intent;
+        import android.os.Bundle;
+        import android.provider.ContactsContract;
+        import android.view.View;
+        import android.widget.ArrayAdapter;
+        import android.widget.Button;
+        import android.widget.ListView;
+        import android.widget.TableRow;
+        import android.widget.TextView;
 
-import com.example.chatapp.Fragments.UsersFragment;
-import com.example.chatapp.Model.Appointment;
-import com.example.chatapp.Model.Doctor;
-import com.example.chatapp.Model.User;
-import com.example.chatapp.Model.ViewAppointmentList;
-import com.google.android.material.tabs.TabLayout;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+        import com.example.chatapp.Fragments.UsersFragment;
+        import com.example.chatapp.Model.Appointment;
+        import com.example.chatapp.Model.Doctor;
+        import com.example.chatapp.Model.User;
+        import com.example.chatapp.Model.ViewAppointmentList;
+        import com.google.android.material.tabs.TabLayout;
+        import com.google.firebase.auth.FirebaseAuth;
+        import com.google.firebase.database.DataSnapshot;
+        import com.google.firebase.database.DatabaseError;
+        import com.google.firebase.database.DatabaseReference;
+        import com.google.firebase.database.FirebaseDatabase;
+        import com.google.firebase.database.ValueEventListener;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
+        import java.lang.reflect.Array;
+        import java.util.ArrayList;
+        import java.util.List;
 
 
 public class ViewingAppointmentActivity extends AppCompatActivity {
@@ -60,13 +60,10 @@ public class ViewingAppointmentActivity extends AppCompatActivity {
         databaseRef = FirebaseDatabase.getInstance().getReference("Appointment");
         cancelbtn = findViewById(R.id.cancel_appointment);
 
-        returnbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ViewingAppointmentActivity.this, PatientDashboard.class);
-                startActivity(intent);
-                finish();
-            }
+        returnbtn.setOnClickListener(v -> {
+            Intent intent = new Intent(ViewingAppointmentActivity.this, PatientDashboard.class);
+            startActivity(intent);
+            finish();
         });
 
         //schedulebtn.setOnClickListener(new View.OnClickListener() {
@@ -96,24 +93,19 @@ public class ViewingAppointmentActivity extends AppCompatActivity {
             }
         });
 
-        cancelbtn.setOnClickListener(new View.OnClickListener() {
+        cancelbtn.setOnClickListener(view -> databaseRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View view) {
-                databaseRef.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        for (DataSnapshot dataSnapshot1: dataSnapshot.getChildren()) {
-                            dataSnapshot1.getRef().removeValue();
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot dataSnapshot1: dataSnapshot.getChildren()) {
+                    dataSnapshot1.getRef().removeValue();
+                }
             }
-        });
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        }));
 
     }
 }
