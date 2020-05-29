@@ -66,14 +66,14 @@ public class ViewingAppointmentActivity extends AppCompatActivity {
             finish();
         });
 
-        //schedulebtn.setOnClickListener(new View.OnClickListener() {
-        //@Override
-        //public void onClick(View view) {
-        //      Intent intent = new Intent(Viewing_AppointmentActivity.this, RequstConsultationActivity.java);
-        //    startActivity(intent);
-        //  finish();
-        //}
-        //});
+        schedulebtn.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+              Intent intent = new Intent(ViewingAppointmentActivity.this, RequestConsultationActivity.class);
+        startActivity(intent);
+        finish();
+        }
+        });
 
         databaseRef.addValueEventListener(new ValueEventListener() {
 

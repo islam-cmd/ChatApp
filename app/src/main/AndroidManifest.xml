@@ -2,6 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.chatapp">
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <uses-feature
         android:name="android.hardware.microphone"
@@ -30,7 +41,39 @@
         <activity android:name=".ViewPatHistoryActivity"></activity>
         <activity android:name=".ViewingAppointmentActivity" />
         <activity android:name=".DoctorDashboard" /> <!-- <<<<<<< HEAD -->
+        <activity android:name=".DocProfile"></activity>
+        <activity android:name=".ViewDoctorInfoActivity" />
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".DoctorLocationActivity"
+            android:exported="true"
+            android:label="@string/title_activity_doctor_location" />
+        <activity android:name=".ViewDoctors" /> <!-- <activity android:name=".OnlineConsultationActivity"/> -->
+        <activity android:name=".PatientDashboard" />
+        <activity
+            android:name=".GpsActivity"
+            android:exported="true"
+            android:label="@string/title_activity_gps" /> <!-- <activity android:name=".DocResetActivity"></activity> -->
+        <activity android:name=".Medhistory" />
+        <activity android:name=".viewpreviousconsults" />
+        <activity android:name=".UserInfoDisplay" />
+
         <activity android:name=".DocScheduleDisplayActivity" />
+        <activity android:name=".Docopinion" />
+        <activity android:name=".OnlineConsultationdoc" />
+        <activity android:name=".DoctorDashboard" /> <!-- <<<<<<< HEAD -->
+        <!-- <activity android:name=".DocScheduleDisplayActivity" /> -->
         <activity android:name=".DocScheduleInputActivity" />
         <activity android:name=".UserInfoInputActivity" /> <!-- <activity android:name=".DocResetActivity"></activity> -->
         <!-- <activity android:name=".OnlineConsultationActivity"/> -->
@@ -44,6 +87,11 @@
         <activity android:name=".DocRegActivity" />
         <activity android:name=".MessageActivity" />
         <activity android:name=".UrgentActivity" />
+        <activity android:name=".DocReceiveUrgentActivity" />
+        <activity android:name=".DocReadUrgentRequest" />
+        <activity android:name=".UrgentActivityList" />
+        <activity android:name=".UrgentActivityView" /> <!-- <activity android:name=".Doc_Accept_Request_Activity"/> -->
+        <activity android:name=".Request_ConsultationActivity" />
         <activity android:name=".StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

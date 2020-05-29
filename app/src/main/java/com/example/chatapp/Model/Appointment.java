@@ -1,51 +1,52 @@
 package com.example.chatapp.Model;
 
+import java.util.HashMap;
+
 public class Appointment {
-    String docName;
-    double date;
-    double docID;
-    String additionalInfo;
+    private String patientId;
+    private String clinic;
+    private String doctor;
+    private String appointmentTime;
+    private int status;   // this will show if the appointment is accepted or not 0 if it si not accepted, 1 if it is accpeted o ru can make it a string and put it as accpeted or inprocess or something
+
+//... add any other variables that will be displayed like date and time etc, if u cannot get the id of both the doctor and the patient let me know
 
 
-    public Appointment(String docName, double docID, double date, String additionalInfo) {
-        this.additionalInfo = additionalInfo;
-        this.docID = docID;
-        this.date = date;
-        this.docName = docName;
+    public Appointment(String patientId, String clinic,String doctor,String appointmentTime ,int status) {
+        this.patientId = patientId;
+        this.clinic = clinic;
+        this.doctor = doctor;
+        this.appointmentTime = appointmentTime;
+        this.status = status;
+// add any additional variables
+
+
     }
 
-    public String getDocName() {
-        return docName;
+    public String getPatientId() {
+        return patientId;
     }
 
-    public double getDate() {
-        return date;
+    public String getClinic() {
+        return clinic;
     }
 
-    public void setDate(double date) {
-        this.date = date;
+    public String getDoctor() {
+        return doctor;
     }
 
-    public void setDocName(String docName) {
-        this.docName = docName;
+    public String getAppointmentTime() {
+        return appointmentTime;
     }
 
-    public double getDocID() {
-        return docID;
+    public int getStatus() {
+        return status;
     }
 
-    public void setDocID(double docID) {
-        this.docID = docID;
+    // This needs to be  here or the app will crash
+    public Appointment() {
     }
 
-    public String getAdditionalInfo() {
-        return additionalInfo;
-    }
-
-    public void setAdditionalInfo(String additionalInfo) {
-        this.additionalInfo = additionalInfo;
-    }
-
-
-
+//generate all setters and getters
 }
+

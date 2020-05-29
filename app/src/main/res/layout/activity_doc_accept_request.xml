@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="DocAcceptRequestActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorDocs">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:text=""
+            android:textColor="#fff"
+            android:textStyle="bold" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="   "
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Appointment Request"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="   "
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="    "
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints">
+
+            <TableRow>
+                <TextView
+                    android:layout_column='1'
+                    android:text="Patient           "
+                    android:padding="3dip" />
+                <TextView
+                    android:text="Date "
+                    android:layout_gravity="left"
+                    android:padding="3dip" />
+                <TextView
+                    android:text="Time "
+                    android:layout_gravity="left"
+                    android:padding="3dip" />
+                <TextView
+                    android:text="Clinic          "
+                    android:layout_gravity="left"
+                    android:padding="3dip" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:layout_column='1'
+                    android:text="Islam Toukhy"
+                    android:padding="3dip" />
+                <TextView
+                    android:text="23-06-2020 "
+                    android:layout_gravity="right"
+                    android:padding="3dip" />
+                <TextView
+                    android:text="1:00PM - 1:30PM"
+                    android:layout_gravity="right"
+                    android:padding="3dip" />
+                <TextView
+                    android:text="Chippendale Clinic"
+                    android:layout_gravity="right"
+                    android:padding="3dip" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </TableLayout>
+
+
+
+
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_acceptRequest"
+        android:layout_width="123dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="223dp"
+        android:background="@color/colorDocs"
+        android:text="Confirm Request"
+        android:textColor="#fff"/>
+
+    <Button
+        android:id="@+id/btn_denyRequest"
+        android:layout_width="123dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="223dp"
+        android:layout_marginEnd="62dp"
+        android:background="@color/colorDocs"
+        android:text="Deny Request"
+        android:textColor="#fff"/>
+
+
+</RelativeLayout>

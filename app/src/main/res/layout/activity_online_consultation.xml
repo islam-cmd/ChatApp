@@ -5,44 +5,86 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".OnlineConsultationActivity">
+
+    <EditText
+        android:id="@+id/subject"
+        android:layout_width="334dp"
+        android:layout_height="61dp"
+        android:layout_below="@+id/bar_layout"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="537dp"
+        android:hint="Subject.." />
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark" />
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"/>
     </com.google.android.material.appbar.AppBarLayout>
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="329dp"
-        android:layout_height="530dp"
-        android:layout_below="@id/bar_layout"
-        android:layout_centerInParent="true" >
+        android:layout_width="352dp"
+        android:layout_height="288dp"
+        android:layout_below="@+id/bar_layout"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="269dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="118dp">
 
 
     </ImageView>
 
-    <Button
+    <TextView
         android:id="@+id/Camera"
-        android:layout_width="wrap_content"
+        android:layout_width="193dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="2dp"
-        android:text="Camera"
-        android:layout_centerHorizontal="true"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/Gallery"
-        android:text="Gallery"
-        android:layout_below="@id/Camera"
-        android:padding="10dp"
-        android:layout_centerHorizontal="true"/>
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="99dp"
+        android:layout_marginEnd="117dp"
+        android:layout_marginBottom="338dp"
+        android:text="add a picture of the issue
+Press here"
+        android:textAlignment="center" />
 
+    <EditText
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="148dp"
+        android:layout_below="@+id/bar_layout"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="77dp"
+        android:layout_marginEnd="41dp"
+        android:layout_marginBottom="377dp"
+        android:hint="Put your description here" />
+
+    <Button
+        android:id="@+id/sendcon"
+        android:layout_width="258dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bar_layout"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="564dp"
+        android:layout_marginEnd="76dp"
+        android:text="Send Consultation" />
 </RelativeLayout>
