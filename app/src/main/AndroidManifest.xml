@@ -72,12 +72,11 @@
         <activity android:name=".DocScheduleDisplayActivity" />
         <activity android:name=".Docopinion" />
         <activity android:name=".OnlineConsultationdoc" />
-        <activity android:name=".DoctorDashboard" /> <!-- <<<<<<< HEAD -->
+        <!-- <<<<<<< HEAD -->
         <!-- <activity android:name=".DocScheduleDisplayActivity" /> -->
         <activity android:name=".DocScheduleInputActivity" />
         <activity android:name=".UserInfoInputActivity" /> <!-- <activity android:name=".DocResetActivity"></activity> -->
-        <!-- <activity android:name=".OnlineConsultationActivity"/> -->
-        <activity android:name=".PatientDashboard" /> <!-- <activity android:name=".DocResetActivity"></activity> -->
+        <!-- <activity android:name=".OnlineConsultationActivity"/> --><!-- <activity android:name=".DocResetActivity"></activity> -->
         <!-- &gt;>>>>>> 384ea6cccaba79c96e0c53f84a178e1b83dd239b -->
         <!-- <activity android:name=".ResetPasswordActivity"></activity> -->
         <activity android:name=".DocMessageActivity" />

@@ -60,12 +60,6 @@ public class ViewingAppointmentActivity extends AppCompatActivity {
         databaseRef = FirebaseDatabase.getInstance().getReference("Appointment");
         cancelbtn = findViewById(R.id.cancel_appointment);
 
-        returnbtn.setOnClickListener(v -> {
-            Intent intent = new Intent(ViewingAppointmentActivity.this, PatientDashboard.class);
-            startActivity(intent);
-            finish();
-        });
-
         schedulebtn.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {

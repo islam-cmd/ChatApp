@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Viewing_AppointmentActivity"
+    tools:context=".ViewingAppointmentActivity"
     android:orientation="horizontal">
 
         <com.google.android.material.appbar.AppBarLayout
