@@ -19,8 +19,8 @@ public class PatientDashboard extends AppCompatActivity {
     Button contactSupport_btn;
     Button emergency_btn;
     Button view_profile;
-
-
+    Button medhis;
+    Button Onlinecon;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,16 +29,35 @@ public class PatientDashboard extends AppCompatActivity {
         logout_btn = findViewById(R.id.log_out);
         view_doctors_btn = (Button) findViewById(R.id.view_doc);
         schedule = findViewById(R.id.Schedule_appointment);
-       view_profile=findViewById(R.id.view_profile);
-        view_doctors_btn.setOnClickListener(new View.OnClickListener(){
+        view_profile=findViewById(R.id.view_profile);
+        medhis = findViewById(R.id.history);
+        view_doctors_btn = findViewById(R.id.view_doc);
+        emergency_btn = findViewById(R.id.Urgent_Case);
+        Onlinecon  = findViewById(R.id.OnlineConsultation);
+
+        Onlinecon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PatientDashboard.this, OnlineConsultationActivity.class);
+                startActivity(intent);
+            }
+        });
+        medhis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PatientDashboard.this, viewpreviousconsults.class);
+                startActivity(intent);
+            }
+        });
+
+       view_doctors_btn.setOnClickListener(new View.OnClickListener(){
+
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(PatientDashboard.this, ViewDoctors.class);
                 startActivity(intent);
             }
         });
-        view_doctors_btn = findViewById(R.id.view_doc);
-        emergency_btn = findViewById(R.id.Urgent_Case);
 
 
         viewMes_btn.setOnClickListener(new View.OnClickListener() {
@@ -46,7 +65,8 @@ public class PatientDashboard extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(PatientDashboard.this, MainActivity.class);
                 startActivity(intent);
-                finish(); }
+//                finish();
+            }
         });
 
         schedule.setOnClickListener(new View.OnClickListener() {
@@ -54,10 +74,10 @@ public class PatientDashboard extends AppCompatActivity {
             public void onClick(View view) {
                // Intent intent = new Intent(PatientDashboard.this, RequestConsultationActivity.class);
                 //startActivity(intent);
-                finish();
+//                finish();
                Intent intent = new Intent(PatientDashboard.this, Request_ConsultationActivity.class);
                 startActivity(intent);
-              finish();
+//              finish();
             }
         });
         emergency_btn.setOnClickListener(new View.OnClickListener() {
@@ -65,7 +85,7 @@ public class PatientDashboard extends AppCompatActivity {
             public void onClick(View view) {
                  Intent intent = new Intent(PatientDashboard.this, UrgentActivityList.class);
                 startActivity(intent);
-                finish();
+//                finish();
             }
         });
         logout_btn.setOnClickListener((new View.OnClickListener() {
@@ -73,7 +93,7 @@ public class PatientDashboard extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(PatientDashboard.this, LoginActivity.class);
                 startActivity(intent);
-                finish();
+//                finish();
             }
         }));
         view_profile.setOnClickListener(new View.OnClickListener() {
@@ -81,7 +101,8 @@ public class PatientDashboard extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(PatientDashboard.this, UserInfoDisplay.class);
                 startActivity(intent);
-                finish(); }
+//                finish();
+            }
         });
     }
 }
