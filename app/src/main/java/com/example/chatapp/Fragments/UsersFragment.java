@@ -46,6 +46,7 @@ public class UsersFragment extends Fragment {
 
     public void readUsers() {
 
+        final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference refrence = FirebaseDatabase.getInstance().getReference("Users");
         refrence.addValueEventListener(new ValueEventListener() {
             @Override
@@ -53,6 +54,9 @@ public class UsersFragment extends Fragment {
                 mUsers.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     User user = snapshot.getValue(User.class);
+//                    assert user != null;
+//                    assert firebaseUser != null;
+//                    if (!user.getId().equals(firebaseUser.getUid())) {
                         mUsers.add(user);
 //                    }
                 }

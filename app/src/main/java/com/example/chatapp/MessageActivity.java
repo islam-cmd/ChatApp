@@ -57,6 +57,7 @@ public class MessageActivity extends AppCompatActivity {
     EditText text_send;
 
     MessageAdapter messageAdapter;
+    List<Chat> mchat;
 
     RecyclerView recyclerView;
     Intent intent;
@@ -65,8 +66,6 @@ public class MessageActivity extends AppCompatActivity {
     Call call;
     ImageButton calling ;
     ImageButton Videocall;
-    List<Chat> mchat;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

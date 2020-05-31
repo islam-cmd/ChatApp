@@ -6,8 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
 
-import com.example.chatapp.Model.DoctorProfile;
-
+import com.example.chatapp.Model.DoctorSchedule;
 import com.example.chatapp.Model.DoctorScheduleList;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,7 +20,7 @@ import java.util.List;
 public class DocScheduleDisplayActivity extends AppCompatActivity {
     DatabaseReference dataRef ;
     ListView listViewDoctor;
-    List<DoctorProfile> docList;
+    List<DoctorSchedule> docList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +28,7 @@ public class DocScheduleDisplayActivity extends AppCompatActivity {
         listViewDoctor =(ListView)findViewById(R.id.doctorList);
         docList = new ArrayList<>();
 
-        dataRef= FirebaseDatabase.getInstance().getReference("DoctorProfile");
+        dataRef= FirebaseDatabase.getInstance().getReference("doctor schedule");
     }
     @Override
     protected void onStart(){
@@ -41,7 +40,7 @@ public class DocScheduleDisplayActivity extends AppCompatActivity {
                 docList.clear();
 
                 for (DataSnapshot doctorSnapShot : dataSnapshot.getChildren()) {
-                    DoctorProfile doctor = doctorSnapShot.getValue(DoctorProfile.class);
+                    DoctorSchedule doctor = doctorSnapShot.getValue(DoctorSchedule.class);
                     docList.add(doctor);
                 }
                 DoctorScheduleList adapter = new DoctorScheduleList(DocScheduleDisplayActivity.this, docList);

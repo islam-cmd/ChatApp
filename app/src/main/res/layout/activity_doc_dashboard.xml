@@ -6,17 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".DoctorDashboard">
 
-    <Button
-        android:id="@+id/OnlineConsultation"
-        android:layout_width="135dp"
-        android:layout_height="61dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="47dp"
-        android:layout_marginTop="522dp"
-        android:background="@color/colorPrimaryDark"
-        android:text="Online Consultation" />
-
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -101,8 +90,8 @@
         android:layout_height="61dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="42dp"
-        android:layout_marginTop="426dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="498dp"
         android:background="@color/colorPrimaryDark"
         android:text="View Messages" />
 
@@ -112,8 +101,8 @@
         android:layout_height="61dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="224dp"
-        android:layout_marginTop="423dp"
+        android:layout_marginStart="228dp"
+        android:layout_marginTop="498dp"
         android:background="@color/colorPrimaryDark"
         android:text="Contact Support" />
 

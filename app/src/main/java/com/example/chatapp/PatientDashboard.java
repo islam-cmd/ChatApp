@@ -30,8 +30,8 @@ public class PatientDashboard extends AppCompatActivity {
         Onlinecon = findViewById(R.id.OnlineConsultation);
         viewMes_btn = findViewById(R.id.ChatActivity);
         logout_btn = findViewById(R.id.log_out);
-        view_doctors_btn = (Button) findViewById(R.id.view_doc);
         schedule = findViewById(R.id.Schedule_appointment);
+
         view_profile = findViewById(R.id.view_profile);
         view_doctors_btn = findViewById(R.id.view_doc);
         emergency_btn = findViewById(R.id.Urgent_Case);
@@ -43,6 +43,7 @@ public class PatientDashboard extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         medhistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,11 +83,15 @@ public class PatientDashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(PatientDashboard.this, UrgentActivityList.class);
+
+
                 startActivity(intent);
 //                finish();
             }
         });
-        logout_btn.setOnClickListener((new View.OnClickListener() {
+
+
+        logout_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(PatientDashboard.this, LoginActivity.class);
@@ -105,4 +110,6 @@ public class PatientDashboard extends AppCompatActivity {
 
 
     }
+
 }
+
