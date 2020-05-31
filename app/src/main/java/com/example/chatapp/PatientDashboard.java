@@ -20,8 +20,9 @@ public class PatientDashboard extends AppCompatActivity {
     Button contactSupport_btn;
     Button emergency_btn;
     Button view_profile;
+
+    Button medhis;
     Button Onlinecon;
-    Button medhistory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +33,30 @@ public class PatientDashboard extends AppCompatActivity {
         logout_btn = findViewById(R.id.log_out);
         schedule = findViewById(R.id.Schedule_appointment);
 
-        view_profile = findViewById(R.id.view_profile);
+        view_profile=findViewById(R.id.view_profile);
+        medhis = findViewById(R.id.history);
         view_doctors_btn = findViewById(R.id.view_doc);
         emergency_btn = findViewById(R.id.Urgent_Case);
-        medhistory = findViewById(R.id.history);
-        view_doctors_btn.setOnClickListener(new View.OnClickListener() {
+        Onlinecon  = findViewById(R.id.OnlineConsultation);
+
+        Onlinecon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PatientDashboard.this, OnlineConsultationActivity.class);
+                startActivity(intent);
+            }
+        });
+        medhis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PatientDashboard.this, viewpreviousconsults.class);
+                startActivity(intent);
+            }
+        });
+
+       view_doctors_btn.setOnClickListener(new View.OnClickListener(){
+
+
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(PatientDashboard.this, ViewDoctors.class);
@@ -74,7 +94,10 @@ public class PatientDashboard extends AppCompatActivity {
                 // Intent intent = new Intent(PatientDashboard.this, RequestConsultationActivity.class);
                 //startActivity(intent);
 //                finish();
-                Intent intent = new Intent(PatientDashboard.this, Request_ConsultationActivity.class);
+
+               Intent intent = new Intent(PatientDashboard.this, Request_ConsultationActivity.class);
+
+               
                 startActivity(intent);
 //              finish();
             }
@@ -96,7 +119,7 @@ public class PatientDashboard extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(PatientDashboard.this, LoginActivity.class);
                 startActivity(intent);
-                finish();
+//                finish();
             }
         }));
         view_profile.setOnClickListener(new View.OnClickListener() {
