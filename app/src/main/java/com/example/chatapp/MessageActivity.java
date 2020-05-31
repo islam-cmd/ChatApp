@@ -155,7 +155,7 @@ public class MessageActivity extends AppCompatActivity {
         });
 
 
-        Videocall = findViewById(R.id.VideoCall);
+//        Videocall = findViewById(R.id.VideoCall);
 //        Videocall.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {

@@ -118,7 +118,7 @@ public class DocMessageActivity extends AppCompatActivity {
 
 
 
-        Videocall = findViewById(R.id.VideoCall);
+//        Videocall = findViewById(R.id.VideoCall);
 //        Videocall.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
