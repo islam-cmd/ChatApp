@@ -77,8 +77,6 @@ public class MessageActivity extends AppCompatActivity {
         androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
-//        setSupportActionBar(toolbar);
-//        getSupportActionBar().setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,7 +96,7 @@ public class MessageActivity extends AppCompatActivity {
         text_send = findViewById(R.id.text_send);
         intent = getIntent();
         final String userid = intent.getStringExtra("userid");
-        Log.d("mytag", "onCreate: "+ userid );
+        Log.d("mytag", "onCreate: " + userid);
         fuser = FirebaseAuth.getInstance().getCurrentUser();
 
 
@@ -155,7 +153,7 @@ public class MessageActivity extends AppCompatActivity {
         });
 
 
-        Videocall = findViewById(R.id.VideoCall);
+//        Videocall = findViewById(R.id.VideoCall);
 //        Videocall.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -283,7 +281,7 @@ public class MessageActivity extends AppCompatActivity {
     private class SinchCallClientListener implements CallClientListener {
 
         @Override
-        public void onIncomingCall(CallClient callClient, final com.sinch.android.rtc.calling.Call Incomingcall ) {
+        public void onIncomingCall(CallClient callClient, final com.sinch.android.rtc.calling.Call Incomingcall) {
             AlertDialog alertDialog = new AlertDialog.Builder(MessageActivity.this).create();
             alertDialog.setTitle("Calling");
             alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Reject", new DialogInterface.OnClickListener() {
@@ -297,10 +295,10 @@ public class MessageActivity extends AppCompatActivity {
             alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Pick", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                call = Incomingcall;
-                call.answer();
-                call.addCallListener(new SinchCallListener());
-                Toast.makeText(getApplicationContext(), "Call has started", Toast.LENGTH_LONG).show();
+                    call = Incomingcall;
+                    call.answer();
+                    call.addCallListener(new SinchCallListener());
+                    Toast.makeText(getApplicationContext(), "Call has started", Toast.LENGTH_LONG).show();
 
                     AlertDialog alertDialog1 = new AlertDialog.Builder(MessageActivity.this).create();
                     alertDialog1.setTitle("Calling");
@@ -320,27 +318,27 @@ public class MessageActivity extends AppCompatActivity {
     }
 
 
-public void CallUser(String id){
-        if(call ==null){
+    public void CallUser(String id) {
+        if (call == null) {
             call = sinchClient.getCallClient().callUser(id);
 
             call.addCallListener(new SinchCallListener());
-        openCallerDialog(call);
+            openCallerDialog(call);
         }
-}
+    }
 
     private void openCallerDialog(final Call call) {
-    AlertDialog alertDialog = new AlertDialog.Builder(MessageActivity.this).create();
-    alertDialog.setTitle("ALERT");
-    alertDialog.setMessage("CALLING");
-    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Hang up", new DialogInterface.OnClickListener() {
-        @Override
-        public void onClick(DialogInterface dialog, int which) {
-            dialog.dismiss();
-            call.hangup();
-        }
-    });
-    alertDialog.show();
+        AlertDialog alertDialog = new AlertDialog.Builder(MessageActivity.this).create();
+        alertDialog.setTitle("ALERT");
+        alertDialog.setMessage("CALLING");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Hang up", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                call.hangup();
+            }
+        });
+        alertDialog.show();
     }
 
 }
