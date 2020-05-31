@@ -46,12 +46,7 @@
                 android:layout_height="40dp"
                 android:layout_marginLeft="10dp"
                 android:background="@drawable/ic_action_call"/>
-            <ImageButton
-                android:id="@+id/VideoCall"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/ic_action_video"/>
+
         </androidx.appcompat.widget.Toolbar>
 
 
