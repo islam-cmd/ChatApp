@@ -4,7 +4,7 @@ public class Doctor {
     private String id;
     private String username;
     private String imageURL;
-    private String specialisation;
+
 
     private String email;
 
@@ -14,12 +14,6 @@ public class Doctor {
         this.imageURL = imageURL;
         this.email = email;
 
-    }
-
-    public Doctor(String email, String username, String specialisation){
-        this.username = username;
-        this.email = email;
-        this.specialisation = specialisation;
     }
 
     public Doctor() {
@@ -56,8 +50,4 @@ public class Doctor {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    public String getSpecialisation() { return specialisation; }
-
-    public void setSpecialisation(String specialisation) { this.specialisation = specialisation; }
 }
