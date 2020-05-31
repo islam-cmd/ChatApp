@@ -71,7 +71,7 @@ public class UrgentActivity extends AppCompatActivity implements AdapterView.OnI
                 String selectedDoctor = userSpinner.getSelectedItem().toString();
                 doctorid = runEventListener(selectedDoctor);
                 if (!titlemsg.equals("") || !issuemsg.equals("")) {
-                    sendIssue(fuser.getUid(), doctorid, titlemsg, issuemsg, "open");
+                    sendIssue(fuser.getUid(), doctorid, titlemsg, issuemsg);
                 } else {
                     Toast.makeText(UrgentActivity.this, "Please fill out all of the text boxes", Toast.LENGTH_SHORT).show();
                 }
@@ -83,7 +83,7 @@ public class UrgentActivity extends AppCompatActivity implements AdapterView.OnI
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(UrgentActivity.this, UrgentActivityList.class);
+                Intent intent = new Intent(UrgentActivity.this, PatientDashboard.class);
                 startActivity(intent);
                 finish();
             }
@@ -140,7 +140,7 @@ public class UrgentActivity extends AppCompatActivity implements AdapterView.OnI
     public void onNothingSelected(AdapterView<?> adapterView) {
     }
 
-    private void sendIssue(String sender, String reciever, String titlemsg, String issuemsg, String status) {
+    private void sendIssue(String sender, String reciever, String titlemsg, String issuemsg) {
 
         DatabaseReference refrence = FirebaseDatabase.getInstance().getReference();
         HashMap<String, Object> hashMap = new HashMap<>();
@@ -148,7 +148,6 @@ public class UrgentActivity extends AppCompatActivity implements AdapterView.OnI
         hashMap.put("reciever", reciever);
         hashMap.put("titlemsg", titlemsg);
         hashMap.put("issuemsg", issuemsg);
-        hashMap.put("status", status);
         refrence.child("Issues").push().setValue(hashMap);
 
     }
