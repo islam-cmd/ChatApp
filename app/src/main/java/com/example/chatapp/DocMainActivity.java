@@ -76,7 +76,7 @@ public class DocMainActivity extends AppCompatActivity {
 
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
 
-        viewPagerAdapter.addFragment(new ChatsFragment(), "Chats");
+//        viewPagerAdapter.addFragment(new ChatsFragment(), "Chats");
 
         viewPagerAdapter.addFragment(new UsersFragment(), "Users");
 

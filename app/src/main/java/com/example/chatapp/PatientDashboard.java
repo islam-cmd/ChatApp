@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
 import java.nio.file.Path;
 
 
@@ -19,25 +20,23 @@ public class PatientDashboard extends AppCompatActivity {
     Button contactSupport_btn;
     Button emergency_btn;
     Button view_profile;
-
+    Button Onlinecon;
+    Button medhistory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_dashboard);
+        Onlinecon = findViewById(R.id.OnlineConsultation);
         viewMes_btn = findViewById(R.id.ChatActivity);
         logout_btn = findViewById(R.id.log_out);
         schedule = findViewById(R.id.Schedule_appointment);
-        emergency_btn = findViewById(R.id.Urgent_Case);
-        view_appointment_btn = (Button) findViewById(R.id.view_appointment);
-       view_profile=findViewById(R.id.view_profile);
+
+        view_profile = findViewById(R.id.view_profile);
         view_doctors_btn = findViewById(R.id.view_doc);
-
-
-
-
-
-        view_doctors_btn.setOnClickListener(new View.OnClickListener(){
+        emergency_btn = findViewById(R.id.Urgent_Case);
+        medhistory = findViewById(R.id.history);
+        view_doctors_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(PatientDashboard.this, ViewDoctors.class);
@@ -45,19 +44,49 @@ public class PatientDashboard extends AppCompatActivity {
             }
         });
 
-
-        viewMes_btn.setOnClickListener(v -> {
-            Intent intent = new Intent(PatientDashboard.this, MainActivity.class);
-            startActivity(intent);
-            finish(); });
-
-
-        logout_btn.setOnClickListener(new View.OnClickListener() {
-          @Override
-            public void onClick(View view) {
-              Intent intent = new Intent(PatientDashboard.this, LoginActivity.class);
+        medhistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PatientDashboard.this, viewpreviousconsults.class);
                 startActivity(intent);
-                finish();
+            }
+        });
+        Onlinecon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PatientDashboard.this, OnlineConsultationActivity.class);
+                startActivity(intent);
+
+            }
+        });
+        viewMes_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PatientDashboard.this, MainActivity.class);
+                startActivity(intent);
+//                finish();
+            }
+        });
+
+        schedule.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Intent intent = new Intent(PatientDashboard.this, RequestConsultationActivity.class);
+                //startActivity(intent);
+//                finish();
+                Intent intent = new Intent(PatientDashboard.this, Request_ConsultationActivity.class);
+                startActivity(intent);
+//              finish();
+            }
+        });
+        emergency_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PatientDashboard.this, UrgentActivityList.class);
+
+
+                startActivity(intent);
+//                finish();
             }
         });
 
@@ -69,25 +98,18 @@ public class PatientDashboard extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
+        }));
+        view_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PatientDashboard.this, UserInfoDisplay.class);
+                startActivity(intent);
+//                finish();
+            }
         });
 
-        schedule = findViewById(R.id.Schedule_appointment);
-        schedule.setOnClickListener(view -> {
-           Intent intent = new Intent(PatientDashboard.this, Request_ConsultationActivity.class);
-            startActivity(intent);
-            finish();
-        });
 
-        emergency_btn.setOnClickListener(view -> {
-             Intent intent = new Intent(PatientDashboard.this, UrgentActivity.class);
-            startActivity(intent);
-            finish();
+    }
 
-
-        view_profile.setOnClickListener(v -> {
-            Intent intent1 = new Intent(PatientDashboard.this, UserInfoDisplay.class);
-            startActivity(intent1);
-            finish(); });
-    });}
 }
 
