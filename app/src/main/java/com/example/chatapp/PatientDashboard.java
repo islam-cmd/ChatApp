@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
+
 import java.nio.file.Path;
 
 
@@ -19,6 +21,8 @@ public class PatientDashboard extends AppCompatActivity {
     Button contactSupport_btn;
     Button emergency_btn;
     Button view_profile;
+    Button Onlinecon;
+    Button medhistory;
 
 
     @Override
@@ -29,53 +33,60 @@ public class PatientDashboard extends AppCompatActivity {
         logout_btn = findViewById(R.id.log_out);
         view_doctors_btn = (Button) findViewById(R.id.view_doc);
         schedule = findViewById(R.id.Schedule_appointment);
-        view_appointment_btn = findViewById(R.id.view_appointment);
-        view_profile=findViewById(R.id.view_profile);
+        view_appointment_btn = (Button) findViewById(R.id.view_appointment);
+        view_profile = findViewById(R.id.view_profile);
         view_doctors_btn = findViewById(R.id.view_doc);
         emergency_btn = findViewById(R.id.Urgent_Case);
-        view_doctors_btn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(PatientDashboard.this, ViewDoctors.class);
-                startActivity(intent);
-            }
+        Onlinecon = findViewById(R.id.OnlineConsultation);
+        medhistory = findViewById(R.id.history);
+
+
+        Onlinecon.setOnClickListener(v -> {
+            Intent intent = new Intent(PatientDashboard.this, OnlineConsultationActivity.class);
+            startActivity(intent);
+        });
+        medhistory.setOnClickListener(v -> {
+            Intent intent = new Intent(PatientDashboard.this, viewpreviousconsults.class);
+            startActivity(intent);
+        });
+        view_doctors_btn.setOnClickListener(v -> {
+            Intent intent = new Intent(PatientDashboard.this, ViewDoctors.class);
+            startActivity(intent);
         });
 
+
+        viewMes_btn.setOnClickListener(v -> {
+            Intent intent = new Intent(PatientDashboard.this, MainActivity.class);
+            startActivity(intent);
+               finish();
+        });
         view_appointment_btn.setOnClickListener(view -> {
             Intent intent = new Intent(PatientDashboard.this, ViewingAppointmentActivity.class);
             startActivity(intent);
             finish();
         });
 
-        viewMes_btn.setOnClickListener(v -> {
-            Intent intent = new Intent(PatientDashboard.this, MainActivity.class);
-            startActivity(intent);
-            finish(); });
 
-        logout_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(PatientDashboard.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-        schedule = findViewById(R.id.Schedule_appointment);
         schedule.setOnClickListener(view -> {
-           Intent intent = new Intent(PatientDashboard.this, RequestConsultationActivity.class);
+            Intent intent = new Intent(PatientDashboard.this, RequestConsultationActivity.class);
             startActivity(intent);
-            finish();
+             finish();
+
         });
         emergency_btn.setOnClickListener(view -> {
-             Intent intent = new Intent(PatientDashboard.this, UrgentActivity.class);
+            Intent intent = new Intent(PatientDashboard.this, UrgentActivityList.class);
             startActivity(intent);
             finish();
-
-
+        });
+        logout_btn.setOnClickListener((view -> {
+            Intent intent = new Intent(PatientDashboard.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }));
         view_profile.setOnClickListener(v -> {
-            Intent intent1 = new Intent(PatientDashboard.this, UserInfoDisplay.class);
-            startActivity(intent1);
-            finish(); });
-    });}
+            Intent intent = new Intent(PatientDashboard.this, UserInfoDisplay.class);
+            startActivity(intent);
+               finish();
+        });
+    }
 }

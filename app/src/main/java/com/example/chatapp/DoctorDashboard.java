@@ -36,18 +36,25 @@ public class DoctorDashboard extends AppCompatActivity {
         viewMes_btn = findViewById(R.id.ChatActivity);
         viewMes_btn = findViewById(R.id.view);
         logout_btn = findViewById(R.id.log_out);
-        view_doctors_btn = findViewById(R.id.view_doc);
+        view_doctors_btn = findViewById(R.id.btn_viewpatients);
         emergency_btn = findViewById(R.id.Urgent_Case);
         OnlineConsultation = findViewById(R.id.OnlineConsultation);
      view_profile=findViewById(R.id.docprofile);
 
+        view_doctors_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DoctorDashboard.this, view_patient.class);
+                startActivity(intent);
+            }
+        });
 
         viewMes_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DoctorDashboard.this, DocMainActivity.class);
                 startActivity(intent);
-                finish();
+//                finish();
             }
         });
         schedule = findViewById(R.id.Schedule_appointment);
@@ -72,7 +79,7 @@ public class DoctorDashboard extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                Toast.makeText(DoctorDashboard.this, "You can not send an empty text" + name, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(DoctorDashboard.this, "You can not send an empty text" + name, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(DoctorDashboard.this, OnlineConsultationdoc.class);
                 intent.putExtra("username", name);
                 startActivity(intent);
@@ -83,7 +90,7 @@ public class DoctorDashboard extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(DoctorDashboard.this, DocProfile.class);
                 startActivity(intent);
-                finish();
+//                finish();
             }
         }));
     }

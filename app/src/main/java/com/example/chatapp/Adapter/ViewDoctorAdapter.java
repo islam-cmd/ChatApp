@@ -67,7 +67,7 @@ public class ViewDoctorAdapter extends RecyclerView.Adapter<ViewDoctorAdapter.Vi
         return mUsers.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView username;
         private ImageView profile_image;

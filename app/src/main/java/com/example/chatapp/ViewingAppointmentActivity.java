@@ -36,7 +36,7 @@ public class ViewingAppointmentActivity extends AppCompatActivity {
 
     Button returnbtn;
     Button cancelbtn;
-    Button schedulebtn;
+    Button Schedule_btn;
     FirebaseAuth auth;
     FirebaseDatabase database;
     FirebaseDatabase firebaseDatabase;
@@ -55,22 +55,20 @@ public class ViewingAppointmentActivity extends AppCompatActivity {
         returnbtn = findViewById(R.id.dashboard);
         username = findViewById(R.id.username);
         viewapp = findViewById(R.id.view_appointment);
-        schedulebtn = findViewById(R.id.Schedule_appointment2);
+        Schedule_btn = findViewById(R.id.Schedule_appointment_btn);
         viewappList = new ArrayList<>();
         databaseRef = FirebaseDatabase.getInstance().getReference("Appointment");
         cancelbtn = findViewById(R.id.cancel_appointment);
 
-        schedulebtn.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-              Intent intent = new Intent(ViewingAppointmentActivity.this, RequestConsultationActivity.class);
-        startActivity(intent);
-        finish();
-        }
-        });
+
+//        Schedule_btn.setOnClickListener(new View.OnClickListener() {
+   //         @Override
+     //       public void onClick(View view) {
+       //         startActivity(new Intent(ViewingAppointmentActivity.this, RequestConsultationActivity.class));
+         //   }
+        //});
 
         databaseRef.addValueEventListener(new ValueEventListener() {
-
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 viewappList.clear();
@@ -87,19 +85,18 @@ public class ViewingAppointmentActivity extends AppCompatActivity {
             }
         });
 
-        cancelbtn.setOnClickListener(view -> databaseRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot dataSnapshot1: dataSnapshot.getChildren()) {
-                    dataSnapshot1.getRef().removeValue();
-                }
-            }
+       // cancelbtn.setOnClickListener(view -> databaseRef.addValueEventListener(new ValueEventListener() {
+         //   @Override
+           // public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+             //   for (DataSnapshot dataSnapshot1: dataSnapshot.getChildren()) {
+               //     dataSnapshot1.getRef().removeValue();
+                //}
+            //}
+           /// @Override
+            //public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        }));
+            //}
+       // }));
 
     }
 }
