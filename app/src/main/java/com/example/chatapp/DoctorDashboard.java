@@ -40,6 +40,7 @@ public class DoctorDashboard extends AppCompatActivity {
         emergency_btn = findViewById(R.id.Urgent_Case);
         OnlineConsultation = findViewById(R.id.OnlineConsultation);
      view_profile=findViewById(R.id.docprofile);
+     view_appointment_btn = findViewById(R.id.view_appointment);
 
         view_doctors_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,15 +58,26 @@ public class DoctorDashboard extends AppCompatActivity {
 //                finish();
             }
         });
+
+        view_appointment_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DoctorDashboard.this, ViewingAppointmentActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+
         schedule = findViewById(R.id.Schedule_appointment);
-        //schedule.setOnClickListener(new View.OnClickListener() {
-        //  @Override
-        //public void onClick(View view) {
-        // Intent intent = new Intent(PatientDashboard.this, RequestConsultationActivity.class);
-        //startActivity(intent);
-//                finish();
-        //}
-        // });
+        schedule.setOnClickListener(new View.OnClickListener() {
+          @Override
+        public void onClick(View view) {
+         Intent intent = new Intent(DoctorDashboard.this, RequestConsultationActivity.class);
+        startActivity(intent);
+                finish();
+        }
+         });
         logout_btn.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View view) {

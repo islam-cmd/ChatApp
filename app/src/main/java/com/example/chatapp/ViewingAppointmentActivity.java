@@ -61,12 +61,12 @@ public class ViewingAppointmentActivity extends AppCompatActivity {
         cancelbtn = findViewById(R.id.cancel_appointment);
 
 
-//        Schedule_btn.setOnClickListener(new View.OnClickListener() {
-   //         @Override
-     //       public void onClick(View view) {
-       //         startActivity(new Intent(ViewingAppointmentActivity.this, RequestConsultationActivity.class));
-         //   }
-        //});
+        Schedule_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ViewingAppointmentActivity.this, RequestConsultationActivity.class));
+           }
+        });
 
         databaseRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -85,18 +85,18 @@ public class ViewingAppointmentActivity extends AppCompatActivity {
             }
         });
 
-       // cancelbtn.setOnClickListener(view -> databaseRef.addValueEventListener(new ValueEventListener() {
-         //   @Override
-           // public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-             //   for (DataSnapshot dataSnapshot1: dataSnapshot.getChildren()) {
-               //     dataSnapshot1.getRef().removeValue();
-                //}
-            //}
-           /// @Override
-            //public void onCancelled(@NonNull DatabaseError databaseError) {
+       cancelbtn.setOnClickListener(view -> databaseRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot dataSnapshot1: dataSnapshot.getChildren()) {
+                    dataSnapshot1.getRef().removeValue();
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            //}
-       // }));
+            }
+        }));
 
     }
 }
